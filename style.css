@@ -1178,7 +1178,6 @@ footer span {
   header {
     height: 70px;
     width: 100dvw;
-    overflow-x:hidden;
   }
   header .logo-title a {
     font-size: 30px;
