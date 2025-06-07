@@ -1176,7 +1176,8 @@ footer span {
   }
   header {
     height: 70px;
-    width: 100dvw;
+    width: 100%;
+    overflow-x:hidden;
   }
   header .logo-title a {
     font-size: 30px;
@@ -1284,8 +1285,8 @@ footer span {
   }
 
   .img-hero img {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     margin-bottom: 100px;
   }
 
