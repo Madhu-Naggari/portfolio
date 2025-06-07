@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" width="device-witdth,scale=1.0" />
+    <title>Copy Text Content To Clipboard - HTML CSS & Javascript</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        width: 100%;
+        position: relative;
+        /* min-height: 100vh; */
+        font-family: "Poppins", sans-serif;
+      }
+      .Example-code-small-one {
+        width: 100%;
+        height: auto;
+        display: flex;
+        /* align-items: center; */
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        position: relative;
+      }
+      .Example-code-small-one h2 {
+        position: relative;
+        left: 2%;
+        top: 20px;
+      }
+      .code-small-one {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5% 2%;
+      }
+      .text-box-small-one {
+        width: 100%;
+        display: flex;
+        border-radius: 8px;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0,
+          rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+      }
+      .top-area-small-one {
+        display: flex;
+        width: 90%;
+        justify-content: space-between;
+        padding: 1%;
+      }
+      .textarea-small-one {
+        width: 95%;
+        padding: 10px;
+        border: none;
+        background: rgba(148, 148, 148, 0.1);
+        outline: none;
+        font-weight: 300;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="Example-code-small-one">
+      <h2>Example</h2>
+      <div class="code-small-one">
+        <div class="text-box-small-one">
+          <div class="top-area-small-one">
+            <h4>HTML</h4>
+            <div class="copy-btn-small-one">
+              <i class="fas fa-copy"></i>
+            </div>
+          </div>
+          <textarea class="textarea-small-one" spellcheck="false" rows="5">
+oi ama fashjsajasd s fjjashnma assajhfjsarem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      
+      
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </textarea
+          >
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      const copyBtn = document.querySelector(".copy-btn-small-one");
+      const textarea = document.querySelector(".textarea-small-one");
+
+      copyBtn.addEventListener("click", () => {
+        textarea.select();
+        document.execCommand("copy");
+        copyBtn.innerHTML = "<i class='fas fa-check'></i>";
+        copyBtn.style.background = "#2DCDA7";
+        copyBtn.style.height = 25 + "px";
+        // copyBtn.style.width = 20 + "px";
+        copyBtn.style.borderRadius = 10 + "%";
+
+        copyBtn.style.color = "#fff";
+
+        setTimeout(() => {
+          document.getSelection().removeAllRanges();
+          copyBtn.innerHTML = "<i class='fas fa-copy'></i>";
+          copyBtn.style.background = "";
+          copyBtn.style.color = "";
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="blogthree.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <img src="../blogimg/companylogo.png" alt="" />
+      <h1 class="logo"><span>Madhu</span>.Dev</h1>
+    </nav>
+    <div class="layout">
+      <div class="sections">
+        <section id="subSection1">
+          <h1>Creating your own color palette for your design project</h1>
+          <div class="img">
+            <img src="../blogimg/blogthreeui.jpg" alt="" />
+          </div>
+          <p>
+            Colors play a crucial role in every design — they bring life to it,
+            help add meaning to the features you implement, and make your
+            product accessible through a proper contrast ratio.
+          </p>
+          <p>
+            In fact, color contrast is a key consideration in the Web Content
+            Accessibility Guidelines (WCAG). And adherence to these guidelines
+            guarantees that your design is inclusive and accessible to all
+            users, regardless of their visual abilities.
+          </p>
+          <p>
+            Moreover, randomly adding colors to designs can lead to trouble.
+            Inconsistencies and varying shades of the same color can emerge
+            across the product. And this would translate into a terrible user
+            experience.
+          </p>
+          <p>
+            Having a clear color palette helps you avoid color clashes and
+            inconsistencies. It also speeds up the design process since the
+            colors are already chosen, allowing you to focus more on other
+            creative aspects of your work.
+          </p>
+          <p>
+            In this article, I help you build your own color palette. Follow
+            along!
+          </p>
+        </section>
+        <section id="subSection2">
+          <h3>How to create a color palette?</h3>
+          <p>
+            This section will detail the steps to create an effective color
+            palette. We'll cover selecting the appropriate hierarchy, choosing a
+            color model, selecting the best tools, understanding accessibility
+            guidelines, and applying the five-step rule for color selection.
+          </p>
+        </section>
+        <section id="subSection3">
+          <h3>1. Define your primary and secondary colors</h3>
+          <p>
+            Think of what colors resonate with your product. You could use your
+            logo, other elements on your old design system, or colors that
+            generally resonate with your brand as references.
+          </p>
+          <p>
+            For this tutorial, I'll use blue and grey as primary colors, with
+            green, red, and yellow as secondary colors (inspired by the traffic
+            lights, a standard color scheme in many products).
+          </p>
+        </section>
+        <section id="subSection4">
+          <h3>2. Set a hue</h3>
+          <p>
+            We have tons of different color models — RGB, CMYK, Pantone, HSB,
+            HEX, and HSL, among others. And one important aspect of these models
+            is the hue. Understanding and controlling the hue of your colors is
+            crucial for creating a harmonious (and effective) color palette.
+          </p>
+          <p>
+            HSB is the best for a digital color palette. I say this because you
+            must stick with one hue value to ensure consistency in your color
+            palette. Deviating from that number might result in shades that are
+            not a good fit. You can also end up with a different shade and a
+            tally color:
+          </p>
+          <div class="img">
+            <img src="../blogimg/blogthreeone.jpg" alt="" />
+          </div>
+          <p>
+            So first, define the color that meets your needs and check its hue
+            value.
+          </p>
+          <p>
+            This number is now your source of truth; you'll need to use it to
+            create your scale.
+          </p>
+          <p>
+            You might need to change the brightness of some shades to pass
+            accessibility standards (discussed later in this article).
+          </p>
+          <p>I will use this blue as an example:</p>
+          <div class="img-small">
+            <img src="../blogimg/blogthreetwo.jpg" alt="" />
+          </div>
+        </section>
+        <section id="subSection5">
+          <h3>3. Choose a tool to create your palette</h3>
+          <p>
+            ColorBox is an intuitive tool for creating palettes. Of course, you
+            have other options, such as the Canva color palette generator,
+            Colorspace, Kroma, and Color Hunt.
+          </p>
+          <p>
+            I decided to use ColorBox because we can have our palette done
+            within a few clicks, with the important codes only one click away
+            from you.
+          </p>
+          <p>
+            Set your hue, which in this case is 214. Also, ensure that the start
+            and end values are the same.
+          </p>
+          <p>
+            Next, set all curves as linear to ensure your selected color is
+            placed in the middle of this palette. If you apply other values,
+            this position can vary, and then you will not have enough shades
+            above or below it:
+          </p>
+          <div class="img">
+            <img src="../blogimg/blogthreethree.jpg" alt="" />
+          </div>
+          <p>
+            Define the number of steps you want. Here, I will go with eleven,
+            with white at the beginning, black at the end, and nine shades
+            between them.
+          </p>
+          <p>
+            You can also add minor steps if you need an extra shade between
+            them.
+          </p>
+          <p>
+            Finally, use your main HEX code (here, #2574DB) as a major reference
+            to force the color progression through the same value:
+          </p>
+          <div class="img">
+            <img src="../blogimg/blogfourfour.jpg" alt="" />
+          </div>
+          <p>
+            If you enable the option, you can also see all HSB and HEX codes and
+            contrast ratios of the colors generated.
+          </p>
+          <div class="img">
+            <img src="../blogimg/blogthreefive.jpg" alt="" />
+          </div>
+        </section>
+        <section id="subSection6">
+          <h3>4. Conduct an accessibility check</h3>
+          <p>
+            If you've been following along, you'll recall that your main color
+            is the number 5, which lies exactly in the middle of your palette.
+          </p>
+          <p>
+            This color plays an important role here: you have five lighter
+            shades above it and five darker shades below it.
+          </p>
+          <p>
+            But you must be sure that this shade has at least AA accessibility
+            standards. So, test this color on black and white backgrounds, and
+            to do it, you can use Adobe Color. Here's how:
+          </p>
+          <p>
+            Go to <b>Accessibility</b> tools and select the
+            <b>Contrast Checker</b>.
+          </p>
+          <p>
+            Next, paste your color in the text field and set the background to
+            white.
+          </p>
+          <div class="img">
+            <img src="../blogimg/blogthreesix.jpg" alt="" />
+          </div>
+          <p>
+            Our white background check shows a 4.57 ratio, which means it passes
+            for regular and large texts and graphic components and meets the AA
+            standard (WCAG 2.1 level).
+          </p>
+          <p>Now, let's do the same with a completely black background:</p>
+          <div class="img">
+            <img src="../blogimg/blogthreeseven.jpg" alt="" />
+          </div>
+          <p>
+            The black background check shows a 4.6 ratio, so we are good here.
+          </p>
+          <p>
+            You can also invert the colors to double-check the ratios to ensure
+            they pass AA standards in both ways.
+          </p>
+        </section>
+        <section id="subSection7">
+          <h3>5. The 5-step rule</h3>
+          <p>
+            Now that you have successfully conducted an accessibility check on
+            your main color, it is time to check the contrast between the other
+            shades.
+          </p>
+          <p>
+            But, you often cannot do this check on black and white backgrounds.
+          </p>
+          <p>
+            Think of my example: the lighter shade of blue has a terrible
+            contrast with white, and the darker shade is barely visible on
+            black:
+          </p>
+          <div class="img">
+            <img src="../blogimg/blogthreeeight.jpg" alt="" />
+          </div>
+          <i class="figcaption">Poor contrast ratio of light blue on white</i>
+          <div class="img">
+            <img src="../blogimg/blogthreenine.jpg" alt="" />
+          </div>
+          <i class="figcaption">Poor contrast ratio of dark blue on black</i>
+          <p>
+            This brings me to the 5-step rule. This rule is all about matching
+            lighter and darker shades.
+          </p>
+          <p>
+            In the color palette you just built, name your colors from 0 to 100.
+            This naming is essential — it makes the matching easier as the rule
+            is about combining colors that are five steps away (0 - 50, 10 - 60,
+            20 - 70, 30 - 80, 40 - 90, 50 - 100):
+          </p>
+          <div class="img">
+            <img src="../blogimg/blogthree10.jpg" alt="" />
+          </div>
+          <p>After naming your colors, check if the rule is working.</p>
+          <p>
+            For this example, I chose the colors 10 and 60 and pasted them onto
+            Adobe Color to check the ratio:
+          </p>
+          <div class="img">
+            <img src="../blogimg/blogthreeeleven.jpg" alt="" />
+          </div>
+          <p>The ratio turned out to be 5.08. Fantastic!</p>
+          <p>
+            Do the same with the other pairs of shades, say, 20-70, 30-80, and
+            40-90, and check the ratios. These pairs should also pass the test.
+          </p>
+          <p>But what if your color pairs don't pass the ratio test?</p>
+          <p>
+            If those shades don't pass the test, it could badly impact your
+            product's UX, causing bad readability and accessibility problems
+            that, depending on the country, could push your work into lawsuits.
+          </p>
+          <p>
+            To fix those that don't pass the test, go to your design tool and
+            change the luminosity until you find one shade that passes the
+            contrast ratio test. You could choose to make the lighter color dark
+            or vice versa — it is totally up to you.
+          </p>
+          <p>
+            Repeat steps two through five for all the colors you defined in the
+            beginning.
+          </p>
+          <p>Here is the palette I created for my colors:</p>
+          <div class="img">
+            <img src="../blogimg/blogthreetwelve.jpg" alt="" />
+          </div>
+        </section>
+        <section id="subSection8">
+          <h3>The nightmare with yellow</h3>
+          <p>
+            Yellow is the hardest color to work with in terms of accessibility
+            for your users.
+          </p>
+          <p>
+            Think of it this way — when you want to make it darker, there is no
+            'dark yellow'; it turns into a shade of brown, rust, or orange.
+          </p>
+          <p>Plus, this color has a terrible contrast with white:</p>
+          <div class="img">
+            <img src="../blogimg/blogthreefourteen.jpg" alt="" />
+          </div>
+          <i class="figcaption"
+            >Poor contrast ratio of light shades of yellow on white
+            backgrounds</i
+          >
+          <p>Let's help you find a way to work with yellow palettes.</p>
+          <p>Below is a list of the different options you may choose from:</p>
+        </section>
+        <section id="subSection9">
+          <h3>1. Remove yellow from your palette</h3>
+          <p>
+            Because yellow does not pass basic accessibility standards, you can
+            try to remove it from your product. Choosing this way out would be
+            especially easier if your design project is fresh.
+          </p>
+          <p>
+            But if you've been working on it for a while and your design relies
+            on the traffic light scheme, be careful. Changing it would mislead
+            your users, as these color coils play an important role in your
+            product.
+          </p>
+          <p>
+            If you are willing to change it, you must interview your users and
+            test your prototype with different people to understand their
+            feelings about those changes.
+          </p>
+        </section>
+        <section id="subSection10">
+          <h3>2. Choose a dark background</h3>
+          <p>
+            As we discussed before, yellow has a bad contrast ratio with white.
+          </p>
+          <p>
+            Wonderfully, it is the opposite when we talk about its contrast with
+            black. So, if your brand color palette allows you to have a dark
+            background, you can easily play with different shades of yellow. Go
+            for it!
+          </p>
+        </section>
+        <section id="subSection11">
+          <h3>3. Strategically use yellow</h3>
+          <p>
+            You may choose to use yellow for warnings. In these design aspects,
+            you must draw the user's attention to the message, not the
+            background.
+          </p>
+          <p>
+            This means that if your background is not accessible, it wouldn't be
+            a UX problem.
+          </p>
+          <div class="img">
+            <img src="../blogimg/blogthreefifteen.jpg" alt="" />
+          </div>
+        </section>
+        <section id="subSection12">
+          <h3>4. Add a border</h3>
+          <p>
+            If you need your yellow to be visible, apply a dark border to the
+            design element and then add the same color on the border and the
+            text.
+          </p>
+          <p>
+            For instance, if your background is yellow 30, choose yellow 80 or
+            above.
+          </p>
+          <p>
+            By doing this, you ensure all colors on that element are accessible.
+            Here's an example:
+          </p>
+          <div class="img">
+            <img src="../blogimg/blogthreesixteen.jpg" alt="" />
+          </div>
+        </section>
+        <section id="subSection13">
+          <h3>Understanding WCAG standards</h3>
+          <p>
+            Creating your digital color palette is crucial in ensuring your
+            product meets accessibility standards. Accessibility enhances the
+            user experience for everyone — whether it's a ramp on a sidewalk, a
+            color palette for a digital product, or devices that aid people with
+            disabilities.
+          </p>
+          <p>
+            When developing your color palette, it's important to understand the
+            WCAG 2.0 guidelines, which classify accessibility into three levels:
+          </p>
+          <div class="mini-sub-section-one">
+            <p>
+              <i class="bx bx-radio-circle"></i> <b>Level A:</b> The basic
+              level, addressing minimum accessibility requirements, though often
+              leaving larger issues unresolved
+            </p>
+            <p>
+              <i class="bx bx-radio-circle"></i> <b>Level AA: </b>A mid-range
+              level commonly adopted by major companies. For example, following
+              guidelines like Google's Material Design ensures your color
+              choices meet essential accessibility criteria
+            </p>
+            <p>
+              <i class="bx bx-radio-circle"></i> <b>Level AAA:</b> The highest
+              level, incorporating the most advanced requirements, covering
+              comprehensive design and development considerations
+            </p>
+          </div>
+          <p>
+            A thoughtfully designed color palette that meets Level AA standards
+            means your product adheres to good accessibility practices.
+            Achieving Level AAA indicates that your palette — and overall design
+            — exceeds typical requirements, providing an exceptional user
+            experience.
+          </p>
+          <p>
+            However, remember that a good color palette is just one part of the
+            accessibility puzzle. While it's essential, comprehensive
+            accessibility involves many factors beyond color choices.
+          </p>
+          <p>
+            By focusing on creating an accessible color palette as a
+            foundational step, you set the stage for designing digital products
+            that are inclusive, usable, and enjoyable for all users.
+          </p>
+        </section>
+      </div>
+      <header>
+        <ul class="navlist">
+          <h4>on this page</h4>
+          <li>
+            <a href="#subSection1" class="active">Intro</a>
+          </li>
+
+          <li><a href="#subSection2">How to create a color palette?</a></li>
+          <li class="sec-space">
+            1.
+            <a href="#subSection3">Define your primary and secondary colors</a>
+          </li>
+          <li class="sec-space">2. <a href="#subSection4">Set a hue</a></li>
+          <li class="sec-space">
+            3. <a href="#subSection5"> Choose a tool to create your palette </a>
+          </li>
+          <li class="sec-space">
+            4. <a href="#subSection6"> Conduct an accessibility check </a>
+          </li>
+
+          <li class="sec-space">
+            5. <a href="#subSection7"> The 5-step rule </a>
+          </li>
+          <li><a href="#subSection8"> The nightmare with yellow </a></li>
+          <li class="sec-space">
+            1. <a href="#subSection9">Remove yellow from your palette</a>
+          </li>
+          <li class="sec-space">
+            2. <a href="#subSection10"> Choose a dark background </a>
+          </li>
+          <li class="sec-space">
+            3. <a href="#subSection11"> Strategically use yellow </a>
+          </li>
+          <li class="sec-space">
+            4. <a href="#subSection12"> Add a border </a>
+          </li>
+          <li><a href="#subSection13"> Understanding WCAG standards </a></li>
+        </ul>
+      </header>
+    </div>
+    <footer>
+      <p>Developed by @ <span>Madhu</span></p>
+    </footer>
+    <script src="blogthree.js"></script>
+  </body>
+</html>

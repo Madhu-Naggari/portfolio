@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trends design UI</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      body {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+      .Navbar {
+        position: absolute;
+        height: 50px;
+        left: 20px;
+        top: 20px;
+        width: 100%;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .Navbar img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+      .Navbar h1 {
+        font-size: 30px;
+        font-weight: 900;
+      }
+      .Navbar h1 span,
+      .HomeSection h1,
+      footer span {
+        color: transparent;
+        -webkit-background-clip: text;
+        background: linear-gradient(
+          180deg,
+          rgba(247, 1, 120, 1) 0%,
+          rgba(160, 8, 156, 1) 51%,
+          rgba(99, 13, 178, 1) 100%
+        );
+        background-clip: text;
+      }
+      .HomeSection {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.3);
+        font-size: 30px;
+        font-weight: 900;
+      }
+      .HomeSection h1 {
+        text-shadow: 1px 2px 70px #000;
+      }
+      .HomeSection p {
+        font-size: 20px;
+      }
+      .Preview-Section {
+        width: 100%;
+        overflow: hidden;
+      }
+      h2 {
+        padding: 20px 10px;
+        font-weight: 600;
+        text-decoration: underline;
+      }
+      .Preview-Section img {
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+      }
+      .Resources-Used {
+        padding: 0 10px;
+      }
+      .Resources-Used h1,
+      .Preview-Section h1 {
+        width: 100%;
+        font-weight: 800;
+        text-align: center;
+        text-transform: uppercase;
+        text-decoration: underline;
+      }
+      h4,
+      h5,
+      p {
+        padding: 2px;
+      }
+      p {
+        position: relative;
+        left: 5px;
+      }
+      .live {
+        margin-bottom: 80px;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        padding: 10px;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+      }
+      .live .liveContent {
+        width: 50%;
+      }
+      .live .liveContent h1 {
+        text-decoration: underline;
+        padding-bottom: 20px;
+      }
+      .live img {
+        width: 400px;
+        height: 400px;
+      }
+      .live .liveContent a {
+        position: relative;
+        top: 20px;
+        text-transform: capitalize;
+        background: linear-gradient(
+          180deg,
+          rgba(247, 1, 120, 1) 0%,
+          rgba(160, 8, 156, 1) 51%,
+          rgba(99, 13, 178, 1) 100%
+        );
+        padding: 8px 10px;
+        border-radius: 5px;
+        margin: 10px;
+        text-decoration: none;
+        font-size: 15px;
+        color: #fff;
+
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+      .live .liveContent a:hover {
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+          rgba(0, 0, 0, 0.23) 0px 6px 6px;
+      }
+      footer {
+        text-align: center;
+        margin: 0 8%;
+        padding: 2rem 0;
+        border-top: 2px solid #e8e1e1;
+      }
+      footer span {
+        font-weight: 900;
+      }
+      @media screen and (max-width: 768px) {
+        .HomeSection {
+          width: 100%;
+        }
+        .live {
+          width: 100%;
+          padding-top: 30px;
+          flex-wrap: wrap-reverse;
+        }
+        .live .liveContent {
+          width: 100%;
+        }
+        .live img {
+          width: 250px;
+          height: 300px;
+        }
+      }
+      @media screen and (max-width: 368px) {
+        .Navbar img {
+          width: 35px;
+          height: 35px;
+        }
+        .Navbar h1 {
+          font-size: 30px;
+        }
+        .HomeSection h1 {
+          font-size: 25px;
+        }
+        .HomeSection p {
+          font-size: 15px;
+        }
+        .live img {
+          width: 200px;
+          height: 200px;
+        }
+        .Resources-Used h1,
+        .Preview-Section h1 {
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="Navbar">
+      <img src="../images/companylogo.jpeg" alt="" />
+      <h1><span>Dream</span>True</h1>
+    </nav>
+    <section class="HomeSection">
+      <h1>TRENDZ DESIGN UI</h1>
+      <p>FIGMA & FRAMER</p>
+    </section>
+    <section class="Preview-Section">
+      <h1>project preview</h1>
+      <img src="/O-portfolio/projectimages/clothingstoreframer.jpeg" alt="" />
+    </section>
+    <section class="Resources-Used">
+      <h1 class="Resource-title">Resources Used</h1>
+      <div class="languages">
+        <div class="language">
+          <h2>fIGMA</h2>
+          <div class="description">
+            <p class="para">
+              Figma is a web-based graphics editing and user interface design
+              app. You can use it to do all kinds of graphic design work from
+              wireframing websites, designing mobile app interfaces, prototyping
+              designs, crafting social media posts, and everything in between.
+              Figma is different from other graphics editing tools. Mainly
+              because it works directly on your browser. This means you get to
+              access your projects and start designing from any computer or
+              platform without having to buy multiple licenses or install
+              software. Another reason why designers love this app is that Figma
+              offers a generous free plan where you can create and store 3
+              active projects at a time. It's more than enough for you to learn,
+              experiment, and work on small projects.
+            </p>
+          </div>
+        </div>
+        <div class="language">
+          <h2>FRAMER</h2>
+          <div class="description">
+            <p>
+              Framer is a powerful design and prototyping tool that allows you
+              to create interactive user interfaces (UIs) for web and mobile
+              applications. It provides an intuitive interface where you can
+              visually design components, animations, and interactions. Framer
+              also supports code-based customization, making it a favorite among
+              designers and developers. Whether you're creating a simple button
+              or a complex UI flow, Framer empowers you to bring your ideas to
+              life!
+            </p>
+            <h5>Framer form :</h5>
+            <p>
+              A Framer Form is a powerful feature that allows you to collect
+              information from website visitors without writing any code. With
+              Framer Forms, you can design and customize your forms, capturing
+              data like email signups or client inquiries. You get over 10
+              unique input types, freeform editing, and options to send
+              submissions via email, Google Sheets, or custom webhooks. Plus,
+              it's secure with spam protection and rate limiting
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="live">
+      <div class="liveContent">
+        <h1>Summary</h1>
+        <p>
+          Thanks for reaching me out were this website is a sample of UI design
+          using Figma & Framer to check out full project click on GoLive or
+          contact me
+        </p>
+        <a href="mailto:madhunaggari@gmail.com">Contact me</a>
+      </div>
+      <img src="/O-portfolio/img/support.png" alt="" />
+    </section>
+    <footer>
+      <p>Copyright © 2023 by <span>Madhu</span> || All Right Reservd.</p>
+    </footer>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Explain || MADHU</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="explainDashboard.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <img src="../companylogo.jpeg" alt="" />
+      <h1 class="logo"><span>Dream</span>True</h1>
+    </nav>
+    <section class="Home-Section">
+      <h1 data-aos="zoom-in-up">trendz store ui</h1>
+      <p data-aos="zoom-in-up">FIGMA & FRAMER</p>
+      <div class="showcase">
+        <img src="../shapes/ring.png" class="ring" />
+        <img src="../shapes/circle.png" class="circle" />
+        <img src="../shapes/circle.png" class="circle2" />
+        <img src="../shapes/circle.png" class="circle3" />
+        <img src="../shapes/half-ring.png" class="half-ring" />
+      </div>
+    </section>
+    <section class="Preview-Section">
+      <h2 data-aos="slide-down">project preview</h2>
+      <img data-aos="zoom-in" src="./clothingstoreframer.jpeg" alt="" />
+    </section>
+    <section class="Technologies-Used">
+      <h2 data-aos="slide-down">technologies used</h2>
+      <div class="languages">
+        <div class="language" data-aos="slide-up">
+          <h3>FIGMA</h3>
+          <div class="description">
+            <p class="para">
+              Figma is a web-based graphics editing and user interface design
+              app. You can use it to do all kinds of graphic design work from
+              wireframing websites, designing mobile app interfaces, prototyping
+              designs, crafting social media posts, and everything in between.
+              Figma is different from other graphics editing tools. Mainly
+              because it works directly on your browser. This means you get to
+              access your projects and start designing from any computer or
+              platform without having to buy multiple licenses or install
+              software. Another reason why designers love this app is that Figma
+              offers a generous free plan where you can create and store 3
+              active projects at a time. It's more than enough for you to learn,
+              experiment, and work on small projects.
+            </p>
+          </div>
+        </div>
+        <div class="language" data-aos="slide-up">
+          <h3>FRAMER</h3>
+          <div class="description">
+            <p>
+              A Framer Form is a powerful feature that allows you to collect
+              information from website visitors without writing any code. With
+              Framer Forms, you can design and customize your forms, capturing
+              data like email signups or client inquiries. You get over 10
+              unique input types, freeform editing, and options to send
+              submissions via email, Google Sheets, or custom webhooks. Plus,
+              it's secure with spam protection and rate limiting
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="showcase">
+        <img src="../shapes/ring.png" class="ring" />
+        <img src="../shapes/circle.png" class="circle" />
+        <img src="../shapes/circle.png" class="circle2" />
+        <img src="../shapes/circle.png" class="circle3" />
+        <img src="../shapes/half-ring.png" class="half-ring" />
+      </div>
+    </section>
+    <section class="Live-Section">
+      <div class="description" data-aos="slide-right">
+        <h2>summary</h2>
+        <p>
+          Thanks for reaching me out were this website is a sample of UI design
+          using Figma & Framer to check out full project click on GoLive or
+          contact me
+        </p>
+        <div class="links">
+          <a href="mailto:madhunaggari@gmail.com">Contact me</a>
+          <a href="https://rich-input-685313.framer.app/">Go Live</a>
+        </div>
+      </div>
+      <img data-aos="slide-left" src="../support.png" alt="" />
+      <div class="showcase">
+        <img src="../shapes/circle.png" class="circle" />
+        <img src="../shapes/circle.png" class="circle2" />
+        <img src="../shapes/half-ring.png" class="half-ring" />
+      </div>
+    </section>
+    <footer>
+      <p>Copyright © 2023 by <span>Madhu</span> || All Right Reservd.</p>
+    </footer>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 150,
+        delay: 0,
+        duration: 900,
+        easing: "ease",
+        once: true,
+        mirror: false,
+        anchorPlacement: "top-bottom",
+      });
+    </script>
+    <script>
+      document.oncontextmenu = () => {
+        alert("dont try to inspect our code its out of our policy..!");
+        return false;
+      };
+      document.onkeydown = (e) => {
+        if (e.key == "f12") {
+          alert("dont try to inspect our code its out of our policy..!");
+          return false;
+        }
+        if (e.ctrlKey && e.key == "u") {
+          alert("dont try to inspect our code its out of our policy..!");
+          return false;
+        }
+        if (e.ctrlKey && e.key == "c") {
+          alert("dont try to inspect our code its out of our policy..!");
+          return false;
+        }
+        if (e.ctrlKey && e.key == "v") {
+          alert("dont try to inspect our code its out of our policy..!");
+          return false;
+        }
+        if (e.shiftKey && e.ctrlKey && e.key == "i") {
+          alert("dont try to inspect our code its out of our policy..!");
+          return false;
+        }
+      };
+    </script>
+  </body>
+</html>

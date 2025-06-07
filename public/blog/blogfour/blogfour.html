@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+        <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="blogfour.css">
+  </head>
+  <body>
+    <nav class="navbar">
+      <img src="../blogimg/companylogo.png" alt="" />
+      <h1 class="logo"><span>Madhu</span>.Dev</h1>
+    </nav>
+    <div class="layout">
+      <div class="sections">
+        <section id="subSection1">
+          <h1>Accessibility APIs and their modern use case for UX</h1>
+          <div class="img"><img src="../blogimg/blogfourone.jpg" alt="" /></div>
+          <p>
+            A staggering 16 percent of the global population, or one in six
+            people, experience significant disability according to the World
+            Health Organization. Even in developed nations, the numbers are
+            high.
+          </p>
+          <p>
+            In 2019, 394 million people in the WHO European Region had a health
+            condition amenable to rehabilitation services, which includes
+            sensory impairments. This represents two in five people in the
+            region.
+          </p>
+          <p>
+            In the face of this immense impact, UX professionals should
+            prioritize accessibility in digital products. This ensures we design
+            inclusive experiences that cater to everyone. We'll discuss how to
+            do so using modern accessibility APIs in this tutorial.
+          </p>
+        </section>
+        <section id="subSection2">
+          <h3>What are accessibility APIs?</h3>
+          <p>
+            Modern accessibility APIs make the task of making digital products
+            accessible quite easy for UX professionals and developers. These
+            APIs have come a long way, and their implementation ensures less
+            grunt work on the part of UX professionals and developers compared
+            to before.
+          </p>
+          <p>
+            You can represent the user interface in terms of a tree-like
+            structure. For instance, an application would have a menu containing
+            menu items, which would then have child items. Modern accessibility
+            APIs understand each of these items in hierarchical terms to
+            decipher their relationship to each other.
+          </p>
+          <p>
+            The same logic applies to other elements of the user interface. For
+            instance, a radio button would be understood as belonging to a set
+            of radio buttons in a group. The following is an example of an
+            accessibility tree of a simple web page:
+          </p>
+          <div class="img"><img src="../blogimg/blogfourtwo.jpg" alt="" /></div>
+        </section>
+        <section id="subSection3">
+          <h3>Two common forms of accessibility APIs</h3>
+          <p>
+            There are two main APIs for accessibility — one for the Windows
+            platform and one for the Mac platform. The Windows accessibility API
+            is called the Microsoft UI Automation (UIA), an upgraded replacement
+            for the previous Microsoft Active Accessibility API, or MSAA.
+          </p>
+          <p>
+            In order to understand Microsoft's UIA, we have to understand its
+            three main aspects:
+          </p>
+          <div class="mini-sub-section-one">
+            <p><i class="bx bx-radio-circle"></i>
+              <b> Automation elements: </b>The interface elements that make up
+              the application's interface, such as input fields and buttons
+            </p>
+            <p><i class="bx bx-radio-circle"></i>
+              <b>Control patterns:</b> The functions of the automation elements,
+              such as being able to click a button for expanding or collapsing
+            </p>
+            <p><i class="bx bx-radio-circle"></i>
+              <b>Properties:</b> The descriptive attributes of the automation
+              elements, such as name, role and current state
+            </p>
+          </div>
+          <p>
+            Apple's accessibility API is simply known as the Accessibility API.
+            It's part of the Cocoa framework for macOS and the UIKit framework
+            for iOS.
+          </p>
+          <p>
+            Both the Apple Accessibility API and Microsoft's UIA serve the same
+            purpose: to make the interface elements understandable to assistive
+            technologies. The key difference between Apple's approach and
+            Microsoft's is how their APIs are implemented.
+          </p>
+        </section>
+        <section id="subSection4">
+          <h3>
+            Comparing and evaluating Apple's Accessibility API and Microsoft's
+            UIA
+          </h3>
+          <p>
+            Apple's Accessibility API has a more guided approach to allow for a
+            more developer-friendly experience. The API is also deeply
+            integrated with their assistive technologies, such as Voice Over,
+            Switch Control and Live Listen.
+          </p>
+          <p>
+            This deep integration allows Apple to provide clear guidelines and
+            documentation on how to implement accessibility, including protocols
+            and methods to expose accessibility information. This makes the
+            process of implementing Apple's Accessibility API fairly
+            straightforward for developers.
+          </p>
+          <p>
+            In comparison, Microsoft's UIA requires developers to utilize an
+            extensive set of control patterns and properties. This makes it more
+            complex and requires more manual effort because developers need to
+            create custom automations to expose their interface elements to the
+            accessibility API.
+          </p>
+          <p>
+            UIA also needs to work across different UI frameworks on Windows
+            devices, which adds to the implementation complexity. However, there
+            is a bright side to this complexity — UIA is designed to work with
+            third-party assistive technologies on Windows.
+            <p>To understand the difference in complexity, let's compare the difference in implementation of accessibility for a button:</p>
+          </p>
+          <div class="mini-sub-section-one">
+<p><i class="bx bx-radio-circle"></i>Apple's API only requires the button to have a property called accessibilityLabel defined. There are other properties such as accessibilityValue, accessibilityHint, and accessibilityTraits that are optional on an as-needed basis</p>
+<p><i class="bx bx-radio-circle"></i>Microsoft's UIA requires that the button has the properties AutomationId, Name, IsEnabled, ControlType, and Invoke defined</p>
+          </div>
+          <p>Since Microsoft's UIA requires more properties defined, you need to have a deep understanding of the boilerplate code. This makes the implementation process more complex to achieve the same result as on Apple's platform.</p>
+          <p>Apple's API handles role and trait mapping automatically based on the nature of the element, whereas Microsoft's UIA requires more explicit handling of events and controls. Microsoft's UIA has what's known as a Provider API to pass on the accessibility information to a Client API for consumption, thus facilitating third-party integrations.</p>
+          <p>Even though Windows might be the more complex platform, it is better suited for niche use cases where the needs cannot be addressed with readily available assistive technologies. This information will help UX designers make informed decisions on what solutions to implement, knowing the limitations of the two platforms.</p>
+        </section>
+        <section id="subSection5">
+            <h3>Using HTML and ARIA attributes for accessibility</h3>
+            <p>Implementing accessibility on web applications is far easier than implementing on native applications. Both Windows and Mac have assistive technologies integrated with their browsers that use the HTML and ARIA attributes in web applications to make them accessible to all users with disability.</p>
+            <p>The assistive technologies themselves don't understand HTML. Behind the scenes, the browser builds an accessibility tree using HTML and CSS to be consumed by the accessibility tools built into the browser:</p>
+            <div class="img"><img src="../blogimg/blogfourthree.jpg" alt=""></div>
+            <p>Therefore, to effectively leverage assistive technologies on browsers, UX designers need to advocate for the proper and meticulous use of proper HTML and ARIA attributes. The process is not complex, but it definitely takes proactive effort to include aspects such as alt text in images and ARIA labels, which are typically not needed by users without disability.</p>
+            <p>           The following image demonstrates the difference between non-semantic and semantic HTML. By simply using semantic HTML, we can ensure that our web application is accessible to assistive technologies in the browser:</p>
+            <div class="img"><img src="../blogimg/blogfourfive.jpg" alt=""></div>
+            <p>Most users are familiar with HTML, so let's take a closer look at ARIA, which is also HTML but its primary purpose is to make websites more accessible by defining different parts of the website in code using labels.</p>
+        </section>
+        <section id="subSection6">
+            <h3>Taking a closer look at ARIA attributes</h3>
+            <p>As per Webflow, ARIA was initially introduced to address missing attributes in HTML4. However, HTML5 has addressed those gaps, so it's always advised to use HTML5 instead of ARIA where applicable.</p>
+            <p>To create a plan for implementing accessibility, we can start by recognizing that there are four main types of disability: visual, physical, auditory and cognitive. We can then plan to solve for accessibility issues based on these four categories.</p>
+            <h4>For visual disabilities:</h4>
+            <div class="mini-sub-section-one">
+                <p><i class="bx bx-radio-circle"></i> Write alt text for images so users with visual disabilities can get an audio description of the image from a screen reader</p>
+                <p><i class="bx bx-radio-circle"></i> Buttons or links should have an aria-label that describes what they do to inform visually impaired users of the action they are about to take</p>
+                <p><i class="bx bx-radio-circle"></i> Ensure the content hierarchy makes sense for screen readers</p>
+                <p><i class="bx bx-radio-circle"></i> Give all objects have an appropriate title, such as titles for iframes</p>
+            </div>
+            <h4>For physical disabilities:</h4>
+             <div class="mini-sub-section-one">
+                <p><i class="bx bx-radio-circle"></i> Ensure users can navigate even in the absence of a keyboard</p>
+                <p><i class="bx bx-radio-circle"></i> Users should not need to use both mouse and keyboard at the same time</p>
+                <p><i class="bx bx-radio-circle"></i> Display focus information in the correct order when users navigate via the keyboard</p>
+             </div>
+             <h4>For auditory disabilities:</h4>
+              <div class="mini-sub-section-one">
+                <p><i class="bx bx-radio-circle"></i> Include descriptive text for audio and video sources</p>
+                <p><i class="bx bx-radio-circle"></i> Include a caption for sounds</p>
+                <p><i class="bx bx-radio-circle"></i> Don't use interactions that solely rely on sound</p>
+                <p><i class="bx bx-radio-circle"></i> Ensure media players have customizable text size and color options for subtitles</p>
+              </div>
+              <h4>For cognitive disabilities:</h4>
+                <div class="mini-sub-section-one">
+                    <p><i class="bx bx-radio-circle"></i>Ensure the navigation system is easy to use</p>
+                    <p><i class="bx bx-radio-circle"></i>Ensure that the actions and steps are not too complex or too long</p>
+                </div>
+                <p>Now, let's look at the different ARIA attributes to better understand their implementations.</p>
+        </section>
+        <section id="subSection7">
+            <h3>ARIA roles</h3>
+            <p>The role attribute is used to define function, which is used by screen readers to understand their function. For instance, the role can be set to banner, navigation, main, search, and so on. These are fairly self-descriptive, but there are a large number of them to choose from, including ones like alert, article, timer, toolbar, tooltip, tab, and more.</p>
+            <h5>The roles can be categorized into the following.</h5>
+            <div class="mini-sub-section">
+                <p><i class="bx bx-radio-circle"></i> <b>Document structure roles:</b> Describe a section of a content</p>
+                <p><i class="bx bx-radio-circle"></i> <b>Landmark roles:</b> Describe large areas of a document</p>
+                <p><i class="bx bx-radio-circle"></i> <b>Widget roles:</b> Describe interactive elements that don't have HTML tags to define them</p>
+                <p><i class="bx bx-radio-circle"></i> <b>Window roles:</b> For sub-windows within a webpage</p>
+                <p><i class="bx bx-radio-circle"></i> <b>Live region roles: </b>For dynamic content within a webpage</p>
+            </div>
+        </section>
+        <section id="subSection8">
+            <h3>ARIA states and properties</h3>
+            <p>Other than ARIA roles, the other important category of ARIA attributes are states and properties. They define the current condition and characteristics of elements within a page.</p>
+            <p>For instance, aria-expanded informs screen readers whether a dropdown is collapsed or expanded. Similarly, aria-checked informs screen readers whether a checkbox is checked or not.</p>
+            <p>The aria-label attribute can be used to describe a button that might not have any text at all. Other examples of ARIA states and properties include:</p>
+            <div class="mini-sub-section">
+                <p><i class="bx bx-radio-circle"></i> aria-active</p>
+                <p><i class="bx bx-radio-circle"></i> aria-current</p>
+               <p><i class="bx bx-radio-circle"></i> aria-disabled</p>
+<p><i class="bx bx-radio-circle"></i> aria-grabbed</p>
+<p><i class="bx bx-radio-circle"></i> aria-hidden</p>
+<p><i class="bx bx-radio-circle"></i> aria-relevant</p>
+            </div>
+            <p>The examples mentioned above are mostly ARIA state attributes, but there are others for ARIA properties, as well.</p>
+            <p>While discussing the extensive nature of ARIA attributes, it's important to mention the need to be cautious about the overuse of ARIA. Overusing ARIA attributes can have the opposite effect of making the webpage more confusing for screen readers. Make sure you conduct exhaustive user testing with real users to ensure the end result is effective and not overwhelming.</p>
+        </section>
+        <section id="subSection9">
+            <h3>Conclusion</h3>
+            <p>Before concluding this article, one last point to keep in mind is that accessibility APIs might struggle to interpret complex user interfaces, or non-standard UI elements.</p>
+            <p>For such scenarios, aria-label can be an easy solution for web applications, but for native applications with complex patterns, Windows has the properties to address complex changes in UI. Developers will have to be more cautious or consider alternate solutions for the Apple equivalent of the action.</p>
+            <p>It's generally agreed upon and understood that designing for accessibility improves brand reputation and trustworthiness. Unfortunately, accessibility efforts are often reactive, tending to arise from avoiding lawsuits. That kind of approach results in delivering the absolute minimum.</p>
+            <p>Putting in the effort to make the product accessible as part of your core plan makes it more cost effective to implement in the long run. This approach usually also results in a superior end result due to meticulous planning and consideration.</p>
+            <p>Therefore, UX designers should champion accessibility as both a noble cause and a business decision that leads to better outcomes.</p>
+
+        </section>
+      </div>
+      <header>
+        <ul class="navlist">
+          <h4>on this page</h4>
+          <li>
+            <a href="#subSection1" class="active">Intro</a>
+          </li>
+
+          <li><a href="#subSection2">What are accessibility APIs?</a></li>
+          <li>
+            <a href="#subSection3">Two common forms of accessibility APIs</a>
+          </li>
+          <li>
+            <a href="#subSection4"
+              >Comparing and evaluating Apple's Accessibility API and
+              Microsoft's UIA</a
+            >
+          </li>
+          <li><a href="#subSection5">Using HTML and ARIA attributes for accessibility </a>
+          </li>
+          <li> <a href="#subSection6"> Taking a closer look at ARIA attributes</a>
+          </li>
+
+          <li>
+             <a href="#subSection7"> ARIA roles</a>
+          </li>
+          <li><a href="#subSection8">ARIA states and properties </a></li>
+          <li><a href="#subSection9">Conclusion</a>
+          </li>
+        </ul>
+      </header>
+    </div>
+    <footer>
+      <p>Developed by @ <span>Madhu</span></p>
+    </footer>
+  </body>
+</html>

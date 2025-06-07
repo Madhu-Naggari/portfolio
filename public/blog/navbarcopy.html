@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --gradient-color-bg: linear-gradient(
+          180deg,
+          rgba(247, 1, 120, 1) 0%,
+          rgba(160, 8, 156, 1) 51%,
+          rgba(99, 13, 178, 1) 100%
+        );
+      }
+      body {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        font-family: "Poppins", sans-serif;
+        background: #e3edf7;
+      }
+      .navbar {
+        position: absolute;
+        display: flex;
+        background: linear-gradient(
+          to top,
+          rgba(220, 242, 255, 0.9) 40%,
+          rgba(217, 235, 255, 0.99)
+        );
+        gap: 10px;
+        z-index: 1000;
+        padding: 10px 30px;
+        height: 80px;
+        width: 100%;
+        align-items: center;
+      }
+
+      .navbar .logo {
+        font-size: 2rem;
+        text-transform: capitalize;
+      }
+
+      .navbar img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+      .navbar h1 span,
+      footer span {
+        background: var(--gradient-color-bg);
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+      .navlist {
+        position: fixed;
+        display: flex;
+        width: 20%;
+        top: 80px;
+        flex-direction: column;
+        padding-left: 10px;
+        gap: 20px;
+      }
+      .navlist::before {
+        content: "";
+        position: absolute;
+        width: 3px;
+        height: 100%;
+        background: #e6006d;
+        left: 0;
+        top: 15px;
+      }
+      li {
+        list-style-type: none;
+      }
+      li a {
+        text-decoration: none;
+        font-weight: 500;
+        color: #000;
+      }
+      .blog a {
+        text-decoration: none;
+        font-weight: 500;
+        position: relative;
+        left: 20px;
+      }
+      li a.active {
+        color: #e6006d;
+      }
+      .layout {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        top: 80px;
+      }
+      .sections {
+        width: 80%;
+        position: relative;
+        padding: 10px;
+      }
+      section {
+        width: 100%;
+        /* min-height: 100vh; */
+        padding: 2rem 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        background: rgba(255, 255, 255, 0.3);
+      }
+      /* output example code */
+
+      .Example-code {
+        position: relative;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        overflow: hidden;
+        width: 100%;
+      }
+      .Example-code h2 {
+        position: relative;
+        left: 2%;
+        top: 20px;
+      }
+      .code {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 1.5rem;
+      }
+      .text-box {
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.5);
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0,
+          rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        width: 25%;
+        min-width: 250px;
+        max-width: 450px;
+        border-radius: 8px;
+      }
+      /* img {
+        position: relative;
+        padding: 10px;
+        width: 100%;
+        top: 2rem;
+        height: 90%;
+      } */
+      .top-area {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2%;
+      }
+      .textarea-html,
+      .textarea-css {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        outline: none;
+        font-weight: 400;
+        border-radius: 5px;
+        background: rgba(148, 148, 148, 0.2);
+      }
+      .output {
+        height: 360px;
+        position: relative;
+        /* padding-bottom: 3rem; */
+        overflow: hidden;
+      }
+      .output img {
+        position: relative;
+        left: -10px;
+        width: 100%;
+      }
+      /* small example box one*/
+      .Example-code-small {
+        width: 100%;
+        height: auto;
+        display: flex;
+        /* align-items: center; */
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        position: relative;
+      }
+      .Example-code-small h2 {
+        position: relative;
+        left: 2%;
+        top: 20px;
+      }
+      .code-small {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5% 5% 0% 4%;
+      }
+      .text-box-small {
+        width: 100%;
+        display: flex;
+        border-radius: 8px;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0,
+          rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+      }
+      .top-area-small {
+        display: flex;
+        width: 90%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1%;
+      }
+      textarea {
+        width: 95%;
+        padding: 10px;
+        border: none;
+        background: rgba(148, 148, 148, 0.1);
+        outline: none;
+        font-weight: 300;
+        font-size: 0.9rem;
+        border-radius: 8px;
+        resize: none;
+      }
+      h1 {
+        font-size: 2rem;
+        font-weight: 900;
+      }
+      p {
+        color: #90979f;
+        font-weight: 400;
+        font-size: 0.9rem;
+        padding-left: 20px;
+      }
+      h4 {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        padding-bottom: 10px;
+      }
+
+      h5,
+      h2 {
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+      /* data  */
+      .description {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .description img {
+        padding-bottom: 2rem;
+      }
+      .title-sub {
+        font-weight: 500;
+      }
+      h4,
+      h5 {
+        padding: 10px 0;
+      }
+      h6 {
+        font-weight: 400;
+      }
+      /* benefits section */
+      .question-line {
+        display: flex;
+      }
+      footer {
+        text-align: center;
+        margin: 0 8%;
+        padding: 2rem 0;
+        border-top: 2px solid #e8e1e1;
+      }
+      footer p {
+        font-weight: 500;
+        color: #000;
+      }
+      footer span {
+        font-weight: 900;
+      }
+
+      @media screen and (max-width: 991px) {
+        html {
+          font-size: 95%;
+        }
+      }
+      @media screen and (max-width: 768px) {
+        html {
+          font-size: 90%;
+        }
+        .navlist {
+          gap: 10px;
+        }
+      }
+      @media screen and (max-width: 530px) {
+        html {
+          font-size: 80%;
+        }
+        .navbar {
+          padding: 10px;
+          position: fixed;
+        }
+
+        .navbar .logo {
+          font-size: 1.5rem;
+        }
+
+        .navbar img {
+          width: 40px;
+          height: 40px;
+        }
+        .navlist {
+          display: none;
+        }
+        .sections {
+          width: 100%;
+        }
+        .sections {
+          width: 100%;
+          padding: 5px;
+        }
+        .text-box {
+          width: 95%;
+        }
+        .output {
+          height: auto;
+          padding-bottom: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <img src="../img/companylogo.jpeg" alt="" />
+      <h1 class="logo"><span>Dream</span>True</h1>
+    </nav>
+    <div class="layout">
+      <div class="sections">
+        <section class="home" id="home">
+          <div class="Home-data description">
+            <h1>
+              @property: Next-gen CSS variables now with universal browser
+              support
+            </h1>
+            <img src="./blogimg/@property.png" alt="" />
+            <p>
+              Get ready for a CSS power-up! The @property rule, part of the CSS
+              Houdini umbrella of APIs, is now fully supported across all modern
+              browsers. This game-changing feature unlocks new levels of control
+              and flexibility for CSS custom properties (also known as CSS
+              variables), making your stylesheets smarter and more dynamic.
+            </p>
+          </div>
+          <div class="define">
+            <h5>defination</h5>
+            <p>
+              The @property CSS at-rule is part of the CSS Houdini umbrella of
+              APIs. It allows developers to explicitly define their CSS custom
+              properties, allowing for property type checking and constraining,
+              setting default values, and defining whether a custom property can
+              inherit values or not. The @property rule represents a custom
+              property registration directly in a stylesheet without having to
+              run any JS. Valid @property rules result in a registered custom
+              property, as if registerProperty() had been called with equivalent
+              parameters.
+            </p>
+          </div>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-one">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-one"
+                  spellcheck="false"
+                  rows="6"
+                >
+@property --property-name {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #c0ffee;
+}
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="about" id="about">
+          <div class="data-description">
+            <h3><span class="title-sub">The benefits of</span> @property</h3>
+            <div class="content">
+              <h4><span>.</span> Semantic meaning:</h4>
+              <p>
+                Use @property to define a type (syntax) for your custom
+                properties. This tells the browser what kind of data your custom
+                property holds (for example, colors, lengths, or numbers),
+                preventing unexpected results and supporting new possibilities
+                like animating gradients.
+              </p>
+            </div>
+            <h4><span>.</span> Fallback values:</h4>
+            <p>
+              No more disappearing styles! Use @propertyto set an initial value
+              for a custom property. If an invalid value is assigned later, the
+              browser gracefully uses your defined fallback.
+            </p>
+            <h4><span>.</span> Improved error handling:</h4>
+            <p>
+              Enhanced type safety and the ability to set fallbacks open up new
+              opportunities for testing and validation directly within your CSS.
+            </p>
+          </div>
+          <div>
+            <h3><span class="title-sub">How to use </span> @property</h3>
+            <p>
+              The @property rule in CSS allows you to explicitly define custom
+              properties (also known as CSS variables) directly in your
+              stylesheet. Here are the steps to use it:
+            </p>
+            <h4 class="question-line">
+              <h5><span>1.</span> Syntax :-</h5>
+              <p>Declare your custom property using the @property rule.</p>
+            </h4>
+            <div class="Example-code-small">
+              <div class="code-small">
+                <div class="text-box-small">
+                  <div class="top-area-small">
+                    <h4>CSS</h4>
+                    <div class="copy-btn-small-two">
+                      <i class="fas fa-copy"></i>
+                    </div>
+                  </div>
+                  <textarea
+                    class="textarea-small-two"
+                    spellcheck="false"
+                    rows="6"
+                  >
+@property --myColor {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: hotpink;
+}
+      </textarea
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="services" id="services">
+          <div>
+            <h3>create advanced custom properties</h3>
+            <p>
+              To create a "standard" custom property, set a property name
+              prepended by a -- and give this property a value. The value of
+              these custom properties is parsed as a string by the browser.
+            </p>
+            <p>
+              The following example shows how a default (string-based) custom
+              property is initialized.
+            </p>
+          </div>
+          <div class="Example-code-small">
+            <h2>Example :-</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-three">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-three"
+                  spellcheck="false"
+                  rows="4"
+                >
+:root {
+--myColor: hotpink;
+}
+                </textarea>
+              </div>
+            </div>
+          </div>
+          <p>
+            To gain the benefits of these "advanced custom properties",
+            including semantics beyond a string, register your CSS custom
+            property with @property.
+          </p>
+          <p>
+            In this example the same custom property is initialized with
+            @property.
+          </p>
+          <div class="Example-code-small">
+            <h2>Example :-</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-four">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-four"
+                  spellcheck="false"
+                  rows="6"
+                >
+@property --myColor {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: hotpink;
+  }
+                </textarea>
+              </div>
+            </div>
+          </div>
+          <p>
+            The custom property initialized with @property provides much more
+            detail than just a name and value. It includes the syntax type and
+            sets inheritance to true or false.
+          </p>
+          <p>
+            The benefit of this approach is that with the standard property, you
+            expect that property to contain a color as a value, and are going to
+            use that color elsewhere in the stylesheet. If someone were to
+            update that property to have a number as a value, any use of the
+            property elsewhere would fail. Using @property there is a fallback
+            color defined, along with a syntax that declares this property must
+            hold a color value. Should a non-color value be used, the fallback
+            would be used instead.
+          </p>
+          <div
+            style="
+              width: 100%;
+              background: rgba(72, 197, 255, 0.3);
+              padding: 10px;
+              border-radius: 8px;
+            "
+          >
+            <span style="display: flex; align-items: center; gap: 10px">
+              <i class="fa-solid fa-star"></i>
+              <h4>Note :-</h4>
+            </span>
+            <h6>
+              you can also set up custom properties with syntax, inheritance,
+              and initial-value in JavaScript using CSS.registerProperty(). You
+              can use JavaScript to manipulate custom property values with
+              style.setProperty("--myColor", "hotpink");.
+            </h6>
+          </div>
+        </section>
+        <section class="portfolio" id="portfolio">
+          <h3>demo : Twinkling gradient background</h3>
+          <p>
+            One of the neat applications of @property is the smooth animation of
+            properties that were previously impossible to transition, like
+            gradients, which are perceived as images by the browser. However, if
+            you give variables syntactic meaning via @property, these can be
+            used in a gradient statement. Now you are describing an animation
+            between two declared values within the gradient, enabling animation.
+            Take the following example: a card with a subtle background
+            animation that consists of two radial gradients which shift color on
+            different timelines:
+          </p>
+          <div class="Example-code">
+            <h2>Example :-</h2>
+            <div class="code">
+              <div class="text-box">
+                <div class="top-area">
+                  <h4>HTML</h4>
+                  <div class="copy-btn-html">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea class="textarea-html" spellcheck="false" rows="15">
+<div class="card">
+<div class="top">
+<span> CSS </span>
+<h2 class="heading"> @property </h2>
+
+</div>
+
+<p> 
+  The @property rule must include both the syntax and inherits descriptors; if either are missing, the entire @property rule is invalid and ignored. The initial-value descriptor is also required, unless the syntax is the * universal syntax definition. 
+</p>
+
+</div>
+                </textarea>
+              </div>
+              <div class="text-box">
+                <div class="top-area">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-css">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea class="textarea-css" spellcheck="false" rows="15">
+@import url('https://fonts.googleapis.com/css2?family=Anybody:wght@500&family=Source+Code+Pro:wght@400;700&display=swap');
+
+@property --card-bg {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #c0bae8;
+}
+
+@property --shine-1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #ffbbc0;
+}
+
+@property --shine-2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #c0aecb;
+}
+
+.card {
+  border-radius: 1rem;
+  max-width: 36ch;
+  padding: 2rem;
+  background: radial-gradient(
+      300px circle at 55% 60% in oklab, 
+      var(--shine-2), transparent 100% 100%
+    ), radial-gradient(
+      farthest-side circle at 75% 30% in oklab, 
+      var(--shine-1) 0%, var(--card-bg) 100%
+    );
+  background-blend-mode: color-burn;
+  animation: animate-color-1 8s infinite linear alternate, 4s animate-color-2 1s infinite linear alternate;
+}
+
+@keyframes animate-color-1 {
+  from {
+    --shine-1: initial;
+  }
+  to {
+    --shine-1: orange;
+  }
+}
+
+@keyframes animate-color-2 {
+  from {
+    --shine-2: initial;
+  }
+  to {
+    --shine-2: hotpink;
+  }
+}
+
+/* Lalala / Etc */
+body {
+  font-family: 'Source Code Pro', system-ui;
+  display: grid;
+  height: 100dvh;
+  place-content: center;
+}
+span {
+  font-weight: 700;
+  font-size: 90%;
+  color: rebeccapurple;
+  background: #e6e6faa8;
+  padding: 0 0.25em 0;
+}
+h2 {
+  font-family: 'Anybody';
+  margin-top: 0.5rem;
+}
+.card {
+  display: grid;
+  gap: 2rem;
+}
+</textarea
+                >
+              </div>
+              <div class="text-box output">
+                <div class="top-area">
+                  <h4>Output</h4>
+                </div>
+                <img src="./blogimg/outputresponsive.png" alt="" />
+              </div>
+            </div>
+          </div>
+          <p>
+            This can be achieved by setting up your custom property values as
+            colors:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-five">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-five"
+                  spellcheck="false"
+                  rows="20"
+                >
+@property --card-bg {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: lavender;
+}
+
+@property --shine-1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: wheat;
+}
+
+@property --shine-2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: lightpink;
+}
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+          <p>
+            Then, you access them to create the initial gradient background:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-six">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-six"
+                  spellcheck="false"
+                  rows="12"
+                >
+.card {
+background: radial-gradient(
+      300px circle at 55% 60% in oklab,
+      var(--shine-2), transparent 100% 100%),
+      radial-gradient(farthest-side circle at 75% 30% in oklab,
+      var(--shine-1) 0%, var(--card-bg) 100%);
+}
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+          <p>Additionally, you then update the values in keyframes:</p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-seven">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-seven"
+                  spellcheck="false"
+                  rows="12"
+                >
+@keyframes animate-color-1 {
+  to {
+    --shine-1: orange;
+  }
+}
+
+@keyframes animate-color-2 {
+  to {
+    --shine-2: hotpink;
+  }
+}
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+          <p>And animate each:</p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-eight">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-eight"
+                  spellcheck="false"
+                  rows="5"
+                >
+animation: animate-color-1 8s infinite linear alternate, animate-color-2 1s infinite linear alternate;
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="blog" id="blog">
+          <h3>Conclusion</h3>
+          <p>
+            CSS registered custom properties are a very powerful feature that
+            extends the CSS language by providing meaning and context to CSS
+            variables. Now, with @property landing in baseline, this CSS
+            superpower is growing in strength.
+          </p>
+          <h3>Adtional Reading</h3>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@property"
+            >. MDN Houdini Reference</a
+          >
+          <a href="https://docs.w3cub.com/css/@property.html">. w3cub DOCS</a>
+        </section>
+        <footer>
+          <p>Developed by @ <span>Madhu</span></p>
+        </footer>
+      </div>
+
+      <header>
+        <ul class="navlist">
+          <h4>on this page</h4>
+          <li><a href="#home" class="active">@property intro</a></li>
+          <li><a href="#about">benefits of @property</a></li>
+          <li><a href="#services">create advanced custom properties</a></li>
+          <li><a href="#portfolio">demo : Twinkling gradient background</a></li>
+          <li><a href="#blog">conclusion</a></li>
+        </ul>
+      </header>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/64734900bd.js"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      let sections = document.querySelectorAll("section");
+      let navLinks = document.querySelectorAll("header ul li a");
+      window.onscroll = () => {
+        sections.forEach((sec) => {
+          let top = window.scrollY;
+          let offset = sec.offsetTop - 150;
+          let height = sec.offsetHeight;
+          let id = sec.getAttribute("id");
+          if (top >= offset && top < offset + height) {
+            navLinks.forEach((links) => {
+              links.classList.remove("active");
+              document
+                .querySelector("header ul li a[href*=" + id + "]")
+                .classList.add("active");
+            });
+          }
+        });
+      };
+    </script>
+    <!-- html copy code js -->
+    <script type="text/javascript">
+      const copyBtnHtml = document.querySelector(".copy-btn-html");
+      const textareaHtml = document.querySelector(".textarea-html");
+
+      copyBtnHtml.addEventListener("click", () => {
+        textareaHtml.select();
+        document.execCommand("copy");
+        copyBtnHtml.innerHTML = "<i class='fas fa-check'></i>";
+        copyBtnHtml.style.background = "#2DCDA7";
+        copyBtnHtml.style.color = "#fff";
+
+        setTimeout(() => {
+          document.getSelection().removeAllRanges();
+          copyBtnHtml.innerHTML = "<i class='fas fa-copy'></i>";
+          copyBtnHtml.style.background = "";
+          copyBtnHtml.style.color = "";
+        }, 2000);
+      });
+    </script>
+    <!-- css copy code js -->
+    <script type="text/javascript">
+      const copyBtnCss = document.querySelector(".copy-btn-css");
+      const textareaCss = document.querySelector(".textarea-css");
+
+      copyBtnCss.addEventListener("click", () => {
+        textareaCss.select();
+        document.execCommand("copy");
+        copyBtnCss.innerHTML = "<i class='fas fa-check'></i>";
+        copyBtnCss.style.background = "#2DCDA7";
+        copyBtnCss.style.color = "#fff";
+
+        setTimeout(() => {
+          document.getSelection().removeAllRanges();
+          copyBtnCss.innerHTML = "<i class='fas fa-copy'></i>";
+          copyBtnCss.style.background = "";
+          copyBtnCss.style.color = "";
+        }, 2000);
+      });
+    </script>
+    <!-- small one -->
+    <script type="text/javascript">
+      const copyBtnSmallOne = document.querySelector(".copy-btn-small-one");
+      const textareaSmallOne = document.querySelector(".textarea-small-one");
+
+      copyBtnSmallOne.addEventListener("click", () => {
+        textareaSmallOne.select();
+        document.execCommand("copy");
+        copyBtnSmallOne.innerHTML = "<i class='fas fa-check'></i>";
+        copyBtnSmallOne.style.background = "#2DCDA7";
+        copyBtnSmallOne.style.height = 25 + "px";
+        // copyBtnSmallOne.style.width = 20 + "px";
+        copyBtnSmallOne.style.borderRadius = 10 + "%";
+
+        copyBtnSmallOne.style.color = "#fff";
+
+        setTimeout(() => {
+          document.getSelection().removeAllRanges();
+          copyBtnSmallOne.innerHTML = "<i class='fas fa-copy'></i>";
+          copyBtnSmallOne.style.background = "";
+          copyBtnSmallOne.style.color = "";
+        }, 1000);
+      });
+    </script>
+    <!-- small two -->
+
+    <script type="text/javascript">
+      const copyBtnSmallTwo = document.querySelector(".copy-btn-small-two");
+      const textareaSmallTwo = document.querySelector(".textarea-small-two");
+
+      copyBtnSmallTwo.addEventListener("click", () => {
+        textareaSmallTwo.select();
+        document.execCommand("copy");
+        copyBtnSmallTwo.innerHTML = "<i class='fas fa-check'></i>";
+        copyBtnSmallTwo.style.background = "#2DCDA7";
+        copyBtnSmallTwo.style.height = 25 + "px";
+        // copyBtnSmallTwo.style.width = 20 + "px";
+        copyBtnSmallTwo.style.borderRadius = 10 + "%";
+
+        copyBtnSmallTwo.style.color = "#fff";
+
+        setTimeout(() => {
+          document.getSelection().removeAllRanges();
+          copyBtnSmallTwo.innerHTML = "<i class='fas fa-copy'></i>";
+          copyBtnSmallTwo.style.background = "";
+          copyBtnSmallTwo.style.color = "";
+        }, 1000);
+      });
+    </script>
+    <!-- small three -->
+    <script type="text/javascript">
+      const copyBtnSmallThree = document.querySelector(".copy-btn-small-three");
+      const textareaSmallThree = document.querySelector(
+        ".textarea-small-three"
+      );
+
+      copyBtnSmallThree.addEventListener("click", () => {
+        textareaSmallThree.select();
+        document.execCommand("copy");
+        copyBtnSmallThree.innerHTML = "<i class='fas fa-check'></i>";
+        copyBtnSmallThree.style.background = "#2DCDA7";
+        copyBtnSmallThree.style.height = 25 + "px";
+        // copyBtnSmallThree.style.width = 20 + "px";
+        copyBtnSmallThree.style.borderRadius = 10 + "%";
+
+        copyBtnSmallThree.style.color = "#fff";
+
+        setTimeout(() => {
+          document.getSelection().removeAllRanges();
+          copyBtnSmallThree.innerHTML = "<i class='fas fa-copy'></i>";
+          copyBtnSmallThree.style.background = "";
+          copyBtnSmallThree.style.color = "";
+        }, 1000);
+      });
+    </script>
+    <!-- small four -->
+    <script type="text/javascript">
+      const copyBtnSmallFour = document.querySelector(".copy-btn-small-four");
+      const textareaSmallFour = document.querySelector(".textarea-small-four");
+
+      copyBtnSmallFour.addEventListener("click", () => {
+        textareaSmallFour.select();
+        document.execCommand("copy");
+        copyBtnSmallFour.innerHTML = "<i class='fas fa-check'></i>";
+        copyBtnSmallFour.style.background = "#2DCDA7";
+        copyBtnSmallFour.style.height = 25 + "px";
+        // copyBtnSmallFour.style.width = 20 + "px";
+        copyBtnSmallFour.style.borderRadius = 10 + "%";
+
+        copyBtnSmallFour.style.color = "#fff";
+
+        setTimeout(() => {
+          document.getSelection().removeAllRanges();
+          copyBtnSmallFour.innerHTML = "<i class='fas fa-copy'></i>";
+          copyBtnSmallFour.style.background = "";
+          copyBtnSmallFour.style.color = "";
+        }, 1000);
+      });
+    </script>
+    <!-- small five -->
+    <script type="text/javascript">
+      const copyBtnSmallFive = document.querySelector(".copy-btn-small-five");
+      const textareaSmallFive = document.querySelector(".textarea-small-five");
+
+      copyBtnSmallFive.addEventListener("click", () => {
+        textareaSmallFive.select();
+        document.execCommand("copy");
+        copyBtnSmallFive.innerHTML = "<i class='fas fa-check'></i>";
+        copyBtnSmallFive.style.background = "#2DCDA7";
+        copyBtnSmallFive.style.height = 25 + "px";
+        // copyBtnSmallFive.style.width = 20 + "px";
+        copyBtnSmallFive.style.borderRadius = 10 + "%";
+
+        copyBtnSmallFive.style.color = "#fff";
+
+        setTimeout(() => {
+          document.getSelection().removeAllRanges();
+          copyBtnSmallFive.innerHTML = "<i class='fas fa-copy'></i>";
+          copyBtnSmallFive.style.background = "";
+          copyBtnSmallFive.style.color = "";
+        }, 1000);
+      });
+    </script>
+    <!-- small six -->
+    <script type="text/javascript">
+      const copyBtnSmallSix = document.querySelector(".copy-btn-small-six");
+      const textareaSmallSix = document.querySelector(".textarea-small-six");
+
+      copyBtnSmallSix.addEventListener("click", () => {
+        textareaSmallSix.select();
+        document.execCommand("copy");
+        copyBtnSmallSix.innerHTML = "<i class='fas fa-check'></i>";
+        copyBtnSmallSix.style.background = "#2DCDA7";
+        copyBtnSmallSix.style.height = 25 + "px";
+        // copyBtnSmallSix.style.width = 20 + "px";
+        copyBtnSmallSix.style.borderRadius = 10 + "%";
+
+        copyBtnSmallSix.style.color = "#fff";
+
+        setTimeout(() => {
+          document.getSelection().removeAllRanges();
+          copyBtnSmallSix.innerHTML = "<i class='fas fa-copy'></i>";
+          copyBtnSmallSix.style.background = "";
+          copyBtnSmallSix.style.color = "";
+        }, 1000);
+      });
+    </script>
+
+    <!-- small seven -->
+    <script type="text/javascript">
+      const copyBtnSmallSeven = document.querySelector(".copy-btn-small-seven");
+      const textareaSmallSeven = document.querySelector(
+        ".textarea-small-seven"
+      );
+
+      copyBtnSmallSeven.addEventListener("click", () => {
+        textareaSmallSeven.select();
+        document.execCommand("copy");
+        copyBtnSmallSeven.innerHTML = "<i class='fas fa-check'></i>";
+        copyBtnSmallSeven.style.background = "#2DCDA7";
+        copyBtnSmallSeven.style.height = 25 + "px";
+        // copyBtnSmallSeven.style.width = 20 + "px";
+        copyBtnSmallSeven.style.borderRadius = 10 + "%";
+
+        copyBtnSmallSeven.style.color = "#fff";
+
+        setTimeout(() => {
+          document.getSelection().removeAllRanges();
+          copyBtnSmallSeven.innerHTML = "<i class='fas fa-copy'></i>";
+          copyBtnSmallSeven.style.background = "";
+          copyBtnSmallSeven.style.color = "";
+        }, 1000);
+      });
+    </script>
+
+    <!-- small eight -->
+    <script type="text/javascript">
+      const copyBtnSmallEight = document.querySelector(".copy-btn-small-eight");
+      const textareaSmallEight = document.querySelector(
+        ".textarea-small-eight"
+      );
+
+      copyBtnSmallEight.addEventListener("click", () => {
+        textareaSmallEight.select();
+        document.execCommand("copy");
+        copyBtnSmallEight.innerHTML = "<i class='fas fa-check'></i>";
+        copyBtnSmallEight.style.background = "#2DCDA7";
+        copyBtnSmallEight.style.height = 25 + "px";
+        // copyBtnSmallEight.style.width = 20 + "px";
+        copyBtnSmallEight.style.borderRadius = 10 + "%";
+
+        copyBtnSmallEight.style.color = "#fff";
+
+        setTimeout(() => {
+          document.getSelection().removeAllRanges();
+          copyBtnSmallEight.innerHTML = "<i class='fas fa-copy'></i>";
+          copyBtnSmallEight.style.background = "";
+          copyBtnSmallEight.style.color = "";
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>

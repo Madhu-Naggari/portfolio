@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="blogFive.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <img src="../blogimg/companylogo.png" alt="" />
+      <h1 class="logo"><span>Madhu</span>.Dev</h1>
+    </nav>
+    <div class="layout">
+      <div class="right-Section">
+        <section id="subSection">
+          <h1>Build a micro-frontend application with React</h1>
+          <div class="img">
+            <img src="./blogfiveone.jpg" alt="" />
+          </div>
+          <p>
+            Working on large-scale projects and managing their codebases can be
+            a big challenge for teams. Although micro-frontends have been in the
+            picture for a while, they are growing in popularity because of their
+            unique features.
+          </p>
+          <p>
+            With a micro-frontend, multiple teams can work on individual modules
+            of the same project without impacting the other modules; it doesn't
+            matter how many modules are added to a current system.
+          </p>
+          <p>
+            In this article, we'll cover the basics of what a micro-frontend is
+            and learn how to implement one using React. We'll also discuss the
+            advantages of using micro-frontends in your applications. Let's get
+            started!
+          </p>
+        </section>
+        <section id="subSection1">
+          <h3>Introduction to micro-frontends</h3>
+          <p>
+            The current web development trend involves building a monolithic
+            frontend app that sits on top of a microservice architecture. But,
+            as developers on different teams contribute to this frontend
+            monolith, it becomes increasingly difficult to maintain.
+            Microservices provide a solution for this.
+          </p>
+          <p>
+            The term micro-frontend extends the concept of microservices to the
+            frontend; a micro-frontend is to the frontend what microservices are
+            to the backend. Essentially, the goal of a micro-frontend is to
+            treat a web app as a composition of features owned by different,
+            independent teams with different missions; each team works
+            end-to-end, from databases to the UI.
+          </p>
+          <p>
+            Micro-frontends don't follow any particular structure and have no
+            fixed boundaries. Your project will likely evolve as time passes,
+            and you may need to revise your micro-frontend as you go along:
+          </p>
+          <div class="img"><img src="./blogfivetwo.jpg" alt="" /></div>
+          <p>
+            React is a popular frontend tech stack, so it's a great choice for
+            implementing a micro-frontend. The micro-frontend architecture is
+            still fairly new and being adopted by different frameworks, so best
+            practices are still evolving. Therefore, you may find it challenging
+            to implement a micro-frontend from scratch. Here is where the
+            create-mf-app package comes in.
+          </p>
+          <p>
+            According to its docs, create-mf-app creates either a module
+            federation application, API server, or library based on one of its
+            templates. It is framework agnostic, meaning it supports multiple
+            frameworks and libraries including Preact, React, and Svelte.
+          </p>
+        </section>
+        <section id="subSection2">
+          <h3>Best practices for micro-frontends</h3>
+          <p>
+            Let's cover some best practices for you to keep in mind when
+            implementing a micro-frontend architecture.
+          </p>
+        </section>
+        <section id="subSection3">
+          <h3>Isolate team code</h3>
+          <p>
+            Each team should develop its features as an independent app, without
+            using a shared state or depending on global variables. Consequently,
+            there should be no sharing of runtime, even if all teams use the
+            same framework.
+          </p>
+        </section>
+        <section id="subSection4">
+          <h3>Establish team prefixes</h3>
+          <p>
+            When isolation is not yet possible, teams should agree on the
+            ownership of namespaces to avoid possible collisions, i.e., CSS,
+            events, local storage, etc.
+          </p>
+        </section>
+        <section id="subSection5">
+          <h3>Build a resilient web app</h3>
+          <p>
+            Each independent team should implement resilient features; even if
+            JavaScript is not enabled or fails, the feature should still work.
+            Additionally, you should foster performance through universal
+            rendering and progressive enhancement.
+          </p>
+        </section>
+        <section id="subSection6">
+          <h3>Use native browser API over custom APIs</h3>
+          <p>
+            You should favor browser events for communication instead of
+            building a global pub/sub system; keep cross-team APIs simple.
+          </p>
+        </section>
+        <section id="subSection7">
+          <h3>Advantages of using a micro-frontend</h3>
+          <p>
+            Simply put, micro-frontends make web applications more maintainable.
+            If you've ever been part of building a large application, you know
+            it's very tedious to manage everything; micro-frontends work
+            similarly to the divide-and-conquer rule.
+          </p>
+          <p>
+            Now, let's understand the most valuable benefits of using a
+            micro-frontend.
+          </p>
+        </section>
+        <section id="subSection8">
+          <h3>Deployment and security</h3>
+          <p>
+            A significant advantage of the micro-frontend architecture is that
+            you can separate a single body into individual pieces that can be
+            deployed independently. Vercel can support an individual repo with
+            different frontends regardless of the language or framework,
+            deploying them together. Otherwise, you can use deployment services
+            like Netlify. Once the micro-frontend is deployed, you can use it as
+            an individual frontend only.
+          </p>
+          <p>
+            To secure your micro-frontend, you can use an SSL certificate like
+            Wildcard, a single or multi-domain, or a SAN SSL certificate. One
+            SAN or multi-domain SSL certificate can secure multiple sites and
+            subdomains.
+          </p>
+        </section>
+        <section id="subSection9">
+          <h3>Technology agnosticism and scalability</h3>
+          <p>
+            With a micro-frontend architecture, you can combine any language or
+            framework in a single project, like React, Vue, Angular, etc. Each
+            frontend team can independently choose and upgrade its own tech
+            stack without an obligation to coordinate with other teams.
+          </p>
+        </section>
+        <section id="subSection10">
+          <h3>Faster development</h3>
+          <p>
+            Your team can develop and deploy your frontend whenever you want.
+            There are zero dependencies associated with individual modules,
+            meaning releases can be done quickly. The main goal of defining the
+            micro-frontend is faster iterations.
+          </p>
+        </section>
+        <section id="subSection11">
+          <h3>Easier learning curve</h3>
+          <p>
+            Each team handles an isolated app feature, which is easier for new
+            developers to understand compared to a frontend monolith.
+            Consequently, the learning curve is linear, translating to lower
+            input costs and higher overall output for new developers.
+          </p>
+        </section>
+        <section id="subSection12">
+          <h3>Vertical domain ownership</h3>
+          <p>
+            Before the introduction of micro-frontends, vertical domain
+            ownership was only possible on the backend via the microservices
+            architecture. Companies could scale product development among
+            independent teams to promote ownership of the backend, but, the
+            frontend remained monolithic.
+          </p>
+          <p>
+            With the introduction of the micro-frontend, the frontend is split
+            into components with vertical domains owned by each team, ranging
+            from the database to the UI.
+          </p>
+        </section>
+        <section id="subSection13">
+          <h3>Code reusability</h3>
+          <p>
+            Micro-frontends foster code reusability because one team can
+            implement and deploy a component that can be reused by multiple
+            teams.
+          </p>
+        </section>
+        <section id="subSection14">
+          <h3>Easy testing</h3>
+          <p>
+            Before jumping into integration testing, it's better to test
+            individual pieces of an application. Teams will test the
+            micro-frontend before testing the application, thereby decreasing
+            the chances of bugs in the real system.
+          </p>
+          <p>
+            Apart from that, other advantages include a small codebase that's
+            easily maintainable and the ability to quickly add or remove any
+            module from the system.
+          </p>
+        </section>
+        <section id="subSection15">
+          <h3>React's role in micro-frontend architecture</h3>
+          <p>
+            React enables the development of components and also supports a
+            modular approach in web development which is helpful in developing
+            microfrontends. It is compatible with various state management
+            libraries and context providers. This makes React suitable for
+            micro-frontend architectures.
+          </p>
+          <p>
+            A major advantage of using React is its ecosystem and community
+            support, which offers many libraries and tools that can be
+            integrated into micro-frontends for routing, state management, and
+            UI component libraries, enhancing the development experience.
+          </p>
+        </section>
+        <section id="subSection16">
+          <h3>Prerequisites</h3>
+          <p>
+            In this tutorial, we'll build a micro-frontend with React. To follow
+            along, you'll need the following:
+          </p>
+          <div class="mini-sub-section">
+            <p>
+              <i class="bx bx-radio-circle"></i> Basic knowledge of JavaScript,
+              React, and webpack
+            </p>
+            <p>
+              <i class="bx bx-radio-circle"></i> The latest version of Node.js
+              installed in your system (v19 at the time of writing)
+            </p>
+          </div>
+          <p>
+            To follow along with the code, you can check out the GitHub repo for
+            this project.
+          </p>
+        </section>
+        <section id="subSection17">
+          <h3>Bootstrapping micro-frontends</h3>
+          <p>
+            Create an application folder called micro-frontend-react. To
+            bootstrap a React micro-frontend app, from this folder, run npx
+            create-mf-app and pass the following data to the interactive
+            terminal:
+          </p>
+          <div class="mini-sub-section">
+            <p><i class="bx bx-radio-circle"></i> Name : <i>home</i></p>
+            <p>
+              <i class="bx bx-radio-circle"></i> Project type :
+              <i>Application</i>
+            </p>
+            <p><i class="bx bx-radio-circle"></i> Port number : <i>3000</i></p>
+          </div>
+          <p>
+            Select React, JavaScript, and Tailwind as your stack. A React
+            micro-frontend application called home will be bootstrapped for you.
+            In your terminal, you should see the following:
+          </p>
+          <div class="img"><img src="./blogfivefour.jpg" alt="" /></div>
+          <p>
+            To test the app from the home folder, run yarn install to install
+            all dependencies. Then, run yarn start to start the dev-server. If
+            everything was successful, you should see the following on your
+            screen:
+          </p>
+          <div class="img"><img src="./blogfivesix.png" alt="" /></div>
+          <p>
+            From the about folder, repeat the steps from above using the
+            following data:
+          </p>
+          <div class="mini-sub-section">
+            <p><i class="bx bx-radio-circle"></i> Name : <i>about</i></p>
+            <p>
+              <i class="bx bx-radio-circle"></i> Project type :
+              <i>Application</i>
+            </p>
+            <p><i class="bx bx-radio-circle"></i> Port number : <i>3001</i></p>
+          </div>
+          <p>
+            Like before, select React, JavaScript, and Tailwind as your stack,
+            and the application will be bootstrapped for you.
+          </p>
+          <p>
+            Finally, to test the app, install the required dependencies by
+            running yarn install. Then, start the dev-server by running yarn
+            start. If everything was successful, you should see the following on
+            your screen:
+          </p>
+          <div class="img"><img src="./blogfiveseven.png" alt="" /></div>
+        </section>
+        <section id="subSection18">
+          <h3>Implementing a micro-frontend</h3>
+          <p>
+            In our micro-frontend implementation, the home application will
+            contain and expose two components, Header and Footer. The about
+            application imports and consumes these components.
+          </p>
+          <p>
+            To implement this, in the src directory in the home application,
+            create two components, Header.jsx and Footer.jsx. Add the following
+            respective code snippets to Header.jsx and Footer.jsx:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>React.js</h4>
+                  <div class="copy-btn-small-one">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-one"
+                  spellcheck="false"
+                  rows="17"
+                  readonly
+                >
+import React from "react"
+export default function Header() {
+    return (
+        <div className="p-5 bg-blue-500 text-white -text-3xl font-bold">
+            Micro Frontend Header
+        </div>
+    )
+}
+import React from "react"
+export default function Footer() {
+    return (
+        <div className="p-5 bg-blue-500 text-white -text-3xl font-bold">
+            Micro Frontend Footer
+        </div>
+    )
+}
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+          <p>
+            Next, update the App.jsx component to use the following navbars:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>React.js</h4>
+                  <div class="copy-btn-small-two">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-two"
+                  spellcheck="false"
+                  rows="18"
+                  readonly
+                >
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.scss";
+import Header from "./Header"
+import Footer from "./Footer";
+
+const App = () => (
+  <div className="text-3xl mx-auto max-w-6xl">
+    <Header />
+    <div className="my-10">
+      Home page Content
+    </div>
+    <Footer />
+  </div>
+);
+
+ReactDOM.render(<App />, document.getElementById("app"));
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+          <p>
+            Test the app by restarting the server, and you'll get the following:
+          </p>
+          <div class="img"><img src="./blogfiveeight.png" alt="" /></div>
+          <p>
+            We need to build the about page in the about app. To do so, update
+            the App.jsx component in the about app, as shown below:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>React.js</h4>
+                  <div class="copy-btn-small-three">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-three"
+                  spellcheck="false"
+                  rows="19"
+                  readonly
+                >
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.scss";
+const App = () => (
+  <div className="text-3xl mx-auto max-w-6xl">
+    <div class="text-center">
+      <img
+        src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"
+        class="rounded-full w-32 mb-4 mx-auto"
+        alt="Avatar"
+      />
+      <h5 class="text-xl font-medium leading-tight mb-2">John Doe</h5>
+      <p class="text-gray-500">Web designer</p>
+    </div>
+  </div>
+);
+
+ReactDOM.render(<App />, document.getElementById("app"));
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+          <p>Restart the dev-server, and you'll get the following:</p>
+          <div class="img"><img src="./blogfivenine.png" alt="" /></div>
+          <p>
+            From the UI above, we see the need for header and footer navigation.
+            But, we don't need to create duplicate copies because we can share
+            them via micro-frontends.
+          </p>
+        </section>
+        <section id="subSection19">
+          <h3>Adding module federation</h3>
+          <p>
+            We noted above that the about page in the about app needs to consume
+            the Header and Footer components of the home application. To do
+            this, we need to add module federation.
+          </p>
+          <p>
+            We'll begin by turning the Header and Footer components of the home
+            application into micro-frontends so that components in other
+            applications can consume them.
+          </p>
+          <p>
+            Open the webpack.config.js file in the home app, which is already
+            created and configured by the create-mf-app package. First, update
+            the exposes property in the ModuleFederationPlugin configuration, as
+            seen below:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>React.js</h4>
+                  <div class="copy-btn-small-four">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-four"
+                  spellcheck="false"
+                  rows="5"
+                  readonly
+                >
+exposes: {
+        "./Header": "./src/Header.jsx",
+        "./Footer": "./src/Footer.jsx"
+      },
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+          <p>
+            In the code above, we specified that the home application exposes
+            the Header and Footer components as micro-frontends. Consequently,
+            these components can be shared.
+          </p>
+          <p>
+            Now, restart the server. Although nothing changes in the UI, a
+            remote entry file has been created for us under the hood. To view
+            the remote entry file, navigate your browser to the URL
+            localhost:3000/remoteEntry.js, and you'll see the following:
+          </p>
+          <div class="img"><img src="./blogfivefive.jpg" alt="" /></div>
+          <p>
+            This remote entry file, remoteEntry.js, is a manifest file of all
+            the modules that are exposed by the home application.
+          </p>
+          <p>
+            To complete our setup, copy the link of the manifest file
+            localhost:3000/remoteEntry.js, then update the remotes property of
+            the ModuleFederationPlugin configuration in the webpack.config.js
+            file in the about app, as seen below:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>React.js</h4>
+                  <div class="copy-btn-small-five">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-five"
+                  spellcheck="false"
+                  rows="5"
+                  readonly
+                >
+remotes: {
+        home: "home@http://localhost:3000/remoteEntry.js",
+      },
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+          <p>
+            The code above specifies that the about component has a remote
+            micro-frontend application called home that shares its module with
+            it. With this setup, we can access any of the components exposed
+            from the home application.
+          </p>
+          <p>
+            Now, update the App.jsx component of the about application with the
+            shared navbars, as seen below:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>React.js</h4>
+                  <div class="copy-btn-small-six">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-six"
+                  spellcheck="false"
+                  rows="22"
+                  readonly
+                >
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.scss";
+import Header from "home/Header";
+import Footer from "home/Footer";
+const App = () => (
+  <div className="text-3xl mx-auto max-w-6xl">
+    <Header />
+    <div class="text-center">
+      <img
+        src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"
+        class="rounded-full w-32 mb-4 mx-auto"
+        alt="Avatar"
+      />
+      <h5 class="text-xl font-medium leading-tight mb-2">John Doe</h5>
+      <p class="text-gray-500">Web designer</p>
+    </div>
+    <Footer />
+  </div>
+);
+ReactDOM.render(<App />, document.getElementById("app"));
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+          <p>
+            Restart the dev-server, and you'll see the following in your
+            browser:
+          </p>
+          <div class="img"><img src="./blogfiveten.png" alt="" /></div>
+          <p>
+            From the code above and the displayed UI, we see that we have
+            successfully shared components between two applications using
+            micro-frontends.
+          </p>
+        </section>
+        <section id="subSection20">
+          <h3>Other options for communication between micro-frontends</h3>
+          <div class="mini-sub-section-one">
+            <p>
+              <i class="bx bx-radio-circle"></i
+              ><b>Event-based communication: </b>Use a publish/subscribe model
+              for micro-frontends to communicate with each other without being
+              directly coupled. Event-based communication is best for
+              micro-frontends that operate independently and need to notify
+              others about certain events without sharing a lot of data
+            </p>
+            <p>
+              <i class="bx bx-radio-circle"></i
+              ><b>Shared libraries/State management: </b>Utilize shared
+              libraries or state management solutions (like Redux) that can be
+              accessed by multiple micro-frontends to manage and synchronize
+              state. This is suitable for scenarios where micro-frontends need
+              to share and manage a global state or when there are complex data
+              dependencies between them
+            </p>
+            <p>
+              <i class="bx bx-radio-circle"></i><b>Context API: </b>Leverage
+              React's Context API to provide a way to pass data through the
+              component tree without having to pass props down manually at every
+              level. Context API is ideal for passing down common data or
+              functions to deeply nested components within the same
+              micro-frontend or across closely related micro-frontends.
+            </p>
+          </div>
+          <h4>Micro-frontend challenges and solutions</h4>
+          <p>
+            While building micro-frontends, there are some challenges you might
+            encounter. In this section, you will learn about them and their
+            possible solutions.
+          </p>
+          <h4>Styling consistency</h4>
+          <p>
+            Ensuring a consistent styling across different micro-frontends can
+            be tasking especially when they are being developed by different
+            teams. Adopting CSS-in-JS libraries like Styled Components or
+            Emotion in React micro-frontends can encapsulate styles at the
+            component level, avoiding global conflicts.
+          </p>
+          <h4>State management across micro-frontends</h4>
+          <p>
+            Managing state across micro-frontends, especially when actions in
+            one micro-frontend need to update the state in another, can
+            complicate state management.
+          </p>
+          <p>
+            You can handle shared state management libraries like Redux or
+            Zustand with careful namespace management ensures smooth state
+            synchronization. Implementing a global event bus or leveraging the
+            Context API can also enable state sharing and actions across
+            micro-frontends.
+          </p>
+          <h4>Versioning and dependency management</h4>
+          <p>
+            Micro-frontends may depend on different versions of libraries or
+            React itself, leading to potential runtime issues or bloated bundle
+            sizes.
+          </p>
+          <p>
+            webpack's Module Federation allows you to share libraries across
+            micro-frontends, ensuring that only a single version of React and
+            other shared libraries are loaded.
+          </p>
+        </section>
+        <section id="subSection21">
+          <h3>Conclusion</h3>
+          <p>
+            In this article, we explored the concept of micro-frontends with
+            examples, discussing their advantages over monolithic frontend
+            applications and other available setups. Micro-frontends offer some
+            great features and are easy to adopt.
+          </p>
+          <p>
+            With create-mf-app, we implemented the micro-frontend architecture
+            as easily as using Create React App. Personally, I like the
+            micro-frontend style because it's easily maintained among teams.
+            Additionally, frontend building and security are managed pretty
+            elegantly.
+          </p>
+        </section>
+      </div>
+      <header>
+        <ul class="navlist">
+          <h4>on this page</h4>
+          <li>
+            <a href="#subSection1" class="active">Intro</a>
+          </li>
+
+          <li><a href="#subSection2">Best practices for micro-frontends</a></li>
+          <li>
+            <a href="#subSection3">Isolate team code</a>
+          </li>
+          <li>
+            <a href="#subSection4">Establish team prefixes</a>
+          </li>
+          <li>
+            <a href="#subSection5">Build a resilient web app </a>
+          </li>
+          <li>
+            <a href="#subSection6"> Use native browser API over custom APIs</a>
+          </li>
+
+          <li>
+            <a href="#subSection7">Advantages of using a micro-frontend</a>
+          </li>
+          <li><a href="#subSection8">Deployment and security </a></li>
+          <li>
+            <a href="#subSection9">Technology agnosticism and scalability</a>
+          </li>
+          <li><a href="#subSection10">Faster development</a></li>
+          <li><a href="#subSection11">Easier learning curve</a></li>
+          <li><a href="#subSection12">Vertical domain ownership</a></li>
+          <li><a href="#subSection13">Code reusability</a></li>
+          <li><a href="#subSection14">Easy testing</a></li>
+          <li>
+            <a href="#subSection15"
+              >React's role in micro-frontend architecture</a
+            >
+          </li>
+          <li><a href="#subSection16">Prerequisites</a></li>
+          <li><a href="#subSection17">Bootstrapping micro-frontends</a></li>
+          <li><a href="#subSection18"> Implementing a micro-frontend </a></li>
+          <li><a href="#subSection19">Adding module federation</a></li>
+          <li>
+            <a href="#subSection20"
+              >Other options for communication between micro-frontends</a
+            >
+          </li>
+          <li>
+            <a href="#subSection21">Conclusion</a>
+          </li>
+        </ul>
+      </header>
+    </div>
+    <footer>
+      <p>Developed by @ <span>Madhu</span></p>
+    </footer>
+    <script
+      src="https://kit.fontawesome.com/64734900bd.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="blogFive.js"></script>
+  </body>
+</html>

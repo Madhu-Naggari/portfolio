@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./blogs.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <img src="../blogimg/companylogo.png" alt="" />
+      <h1 class="logo"><span>Madhu</span>.Dev</h1>
+    </nav>
+    <div class="layout">
+      <div class="sections">
+        <section class="home" id="home">
+          <div class="Home-data description">
+            <h1>
+              @property: Next-gen CSS variables now with universal browser
+              support
+            </h1>
+            <img src="../blogimg/@property.png" alt="" />
+            <p>
+              Get ready for a CSS power-up! The @property rule, part of the CSS
+              Houdini umbrella of APIs, is now fully supported across all modern
+              browsers. This game-changing feature unlocks new levels of control
+              and flexibility for CSS custom properties (also known as CSS
+              variables), making your stylesheets smarter and more dynamic.
+            </p>
+          </div>
+          <div class="define">
+            <h5>defination</h5>
+            <p>
+              The @property CSS at-rule is part of the CSS Houdini umbrella of
+              APIs. It allows developers to explicitly define their CSS custom
+              properties, allowing for property type checking and constraining,
+              setting default values, and defining whether a custom property can
+              inherit values or not. The @property rule represents a custom
+              property registration directly in a stylesheet without having to
+              run any JS. Valid @property rules result in a registered custom
+              property, as if registerProperty() had been called with equivalent
+              parameters.
+            </p>
+          </div>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-one">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-one"
+                  spellcheck="false"
+                  rows="6"
+                  readonly
+                >
+@property --property-name {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #c0ffee;
+}
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="about" id="about">
+          <div class="data-description">
+            <h3><span class="title-sub">The benefits of</span> @property</h3>
+            <div class="content">
+              <h4><span>.</span> Semantic meaning:</h4>
+              <p>
+                Use @property to define a type (syntax) for your custom
+                properties. This tells the browser what kind of data your custom
+                property holds (for example, colors, lengths, or numbers),
+                preventing unexpected results and supporting new possibilities
+                like animating gradients.
+              </p>
+            </div>
+            <h4><span>.</span> Fallback values:</h4>
+            <p>
+              No more disappearing styles! Use @propertyto set an initial value
+              for a custom property. If an invalid value is assigned later, the
+              browser gracefully uses your defined fallback.
+            </p>
+            <h4><span>.</span> Improved error handling:</h4>
+            <p>
+              Enhanced type safety and the ability to set fallbacks open up new
+              opportunities for testing and validation directly within your CSS.
+            </p>
+          </div>
+          <div>
+            <h3><span class="title-sub">How to use </span> @property</h3>
+            <p>
+              The @property rule in CSS allows you to explicitly define custom
+              properties (also known as CSS variables) directly in your
+              stylesheet. Here are the steps to use it:
+            </p>
+            <h4 class="question-line">
+              <h5><span>1.</span> Syntax :-</h5>
+              <p>Declare your custom property using the @property rule.</p>
+            </h4>
+            <div class="Example-code-small">
+              <div class="code-small">
+                <div class="text-box-small">
+                  <div class="top-area-small">
+                    <h4>CSS</h4>
+                    <div class="copy-btn-small-two">
+                      <i class="fas fa-copy"></i>
+                    </div>
+                  </div>
+                  <textarea
+                    class="textarea-small-two"
+                    spellcheck="false"
+                    rows="6"
+                    readonly
+                  >
+@property --myColor {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: hotpink;
+}
+      </textarea
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="services" id="services">
+          <div>
+            <h3>create advanced custom properties</h3>
+            <p>
+              To create a "standard" custom property, set a property name
+              prepended by a -- and give this property a value. The value of
+              these custom properties is parsed as a string by the browser.
+            </p>
+            <p>
+              The following example shows how a default (string-based) custom
+              property is initialized.
+            </p>
+          </div>
+          <div class="Example-code-small">
+            <h2>Example :-</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-three">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-three"
+                  spellcheck="false"
+                  rows="4"
+                  readonly
+                >
+:root {
+--myColor: hotpink;
+}
+                </textarea>
+              </div>
+            </div>
+          </div>
+          <p>
+            To gain the benefits of these "advanced custom properties",
+            including semantics beyond a string, register your CSS custom
+            property with @property.
+          </p>
+          <p>
+            In this example the same custom property is initialized with
+            @property.
+          </p>
+          <div class="Example-code-small">
+            <h2>Example :-</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-four">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-four"
+                  spellcheck="false"
+                  rows="6"
+                  readonly
+                >
+@property --myColor {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: hotpink;
+  }
+                </textarea>
+              </div>
+            </div>
+          </div>
+          <p>
+            The custom property initialized with @property provides much more
+            detail than just a name and value. It includes the syntax type and
+            sets inheritance to true or false.
+          </p>
+          <p>
+            The benefit of this approach is that with the standard property, you
+            expect that property to contain a color as a value, and are going to
+            use that color elsewhere in the stylesheet. If someone were to
+            update that property to have a number as a value, any use of the
+            property elsewhere would fail. Using @property there is a fallback
+            color defined, along with a syntax that declares this property must
+            hold a color value. Should a non-color value be used, the fallback
+            would be used instead.
+          </p>
+          <div
+            style="
+              width: 100%;
+              background: rgba(72, 197, 255, 0.3);
+              padding: 10px;
+              border-radius: 8px;
+            "
+          >
+            <span style="display: flex; align-items: center; gap: 10px">
+              <i class="fa-solid fa-star"></i>
+              <h4>Note :-</h4>
+            </span>
+            <h6>
+              you can also set up custom properties with syntax, inheritance,
+              and initial-value in JavaScript using CSS.registerProperty(). You
+              can use JavaScript to manipulate custom property values with
+              style.setProperty("--myColor", "hotpink");.
+            </h6>
+          </div>
+        </section>
+        <section class="portfolio" id="portfolio">
+          <h3>demo : Twinkling gradient background</h3>
+          <p>
+            One of the neat applications of @property is the smooth animation of
+            properties that were previously impossible to transition, like
+            gradients, which are perceived as images by the browser. However, if
+            you give variables syntactic meaning via @property, these can be
+            used in a gradient statement. Now you are describing an animation
+            between two declared values within the gradient, enabling animation.
+            Take the following example: a card with a subtle background
+            animation that consists of two radial gradients which shift color on
+            different timelines:
+          </p>
+          <div class="Example-code">
+            <h2>Example :-</h2>
+            <div class="code">
+              <div class="text-box">
+                <div class="top-area">
+                  <h4>HTML</h4>
+                  <div class="copy-btn-html">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-html"
+                  spellcheck="false"
+                  readonly
+                  rows="15"
+                >
+<div class="card">
+<div class="top">
+<span> CSS </span>
+<h2 class="heading"> @property </h2>
+
+</div>
+
+<p> 
+  The @property rule must include both the syntax and inherits descriptors; if either are missing, the entire @property rule is invalid and ignored. The initial-value descriptor is also required, unless the syntax is the * universal syntax definition. 
+</p>
+
+</div>
+                </textarea>
+              </div>
+              <div class="text-box">
+                <div class="top-area">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-css">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-css"
+                  readonly
+                  spellcheck="false"
+                  rows="15"
+                >
+@import url('https://fonts.googleapis.com/css2?family=Anybody:wght@500&family=Source+Code+Pro:wght@400;700&display=swap');
+
+@property --card-bg {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #c0bae8;
+}
+
+@property --shine-1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #ffbbc0;
+}
+
+@property --shine-2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #c0aecb;
+}
+
+.card {
+  border-radius: 1rem;
+  max-width: 36ch;
+  padding: 2rem;
+  background: radial-gradient(
+      300px circle at 55% 60% in oklab, 
+      var(--shine-2), transparent 100% 100%
+    ), radial-gradient(
+      farthest-side circle at 75% 30% in oklab, 
+      var(--shine-1) 0%, var(--card-bg) 100%
+    );
+  background-blend-mode: color-burn;
+  animation: animate-color-1 8s infinite linear alternate, 4s animate-color-2 1s infinite linear alternate;
+}
+
+@keyframes animate-color-1 {
+  from {
+    --shine-1: initial;
+  }
+  to {
+    --shine-1: orange;
+  }
+}
+
+@keyframes animate-color-2 {
+  from {
+    --shine-2: initial;
+  }
+  to {
+    --shine-2: hotpink;
+  }
+}
+
+/* Lalala / Etc */
+body {
+  font-family: 'Source Code Pro', system-ui;
+  display: grid;
+  height: 100dvh;
+  place-content: center;
+}
+span {
+  font-weight: 700;
+  font-size: 90%;
+  color: rebeccapurple;
+  background: #e6e6faa8;
+  padding: 0 0.25em 0;
+}
+h2 {
+  font-family: 'Anybody';
+  margin-top: 0.5rem;
+}
+.card {
+  display: grid;
+  gap: 2rem;
+}
+</textarea
+                >
+              </div>
+              <div class="text-box output">
+                <div class="top-area">
+                  <h4>Output</h4>
+                </div>
+                <img src="../blogimg/outputresponsive.png" alt="" />
+              </div>
+            </div>
+          </div>
+          <p>
+            This can be achieved by setting up your custom property values as
+            colors:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-five">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-five"
+                  spellcheck="false"
+                  rows="18"
+                  readonly
+                >
+@property --card-bg {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: lavender;
+}
+
+@property --shine-1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: wheat;
+}
+
+@property --shine-2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: lightpink;
+}
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+          <p>
+            Then, you access them to create the initial gradient background:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-six">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-six"
+                  spellcheck="false"
+                  rows="8"
+                  readonly
+                >
+.card {
+background: radial-gradient(
+      300px circle at 55% 60% in oklab,
+      var(--shine-2), transparent 100% 100%),
+      radial-gradient(farthest-side circle at 75% 30% in oklab,
+      var(--shine-1) 0%, var(--card-bg) 100%);
+}
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+          <p>Additionally, you then update the values in keyframes:</p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-seven">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-seven"
+                  spellcheck="false"
+                  rows="11"
+                  readonly
+                >
+@keyframes animate-color-1 {
+  to {
+    --shine-1: orange;
+  }
+}
+@keyframes animate-color-2 {
+  to {
+    --shine-2: hotpink;
+  }
+}
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+          <p>And animate each:</p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-eight">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-eight"
+                  spellcheck="false"
+                  rows="3"
+                  readonly
+                >
+animation: animate-color-1 8s infinite linear alternate, animate-color-2 1s infinite linear alternate;
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="blog" id="blog">
+          <h3>Conclusion</h3>
+          <p>
+            CSS registered custom properties are a very powerful feature that
+            extends the CSS language by providing meaning and context to CSS
+            variables. Now, with @property landing in baseline, this CSS
+            superpower is growing in strength.
+          </p>
+          <h4>Testing and Accessibility</h4>
+          <ul>
+            <li>
+              <p>
+                Use @property for true fallbacks and testing directly in CSS.
+              </p>
+            </li>
+            <li>
+              <p>
+                Enhance accessibility by writing semantically meaningful code.
+              </p>
+            </li>
+          </ul>
+          <h4>browser support</h4>
+          <p>
+            Custom Properties are widely supported in modern browsers
+            (approximately 85% global market share). Remember, @property
+            empowers you to create more maintainable, expressive, and adaptable
+            stylesheets.
+          </p>
+          <h4>Adtional Reading</h4>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@property"
+            >. MDN Houdini Reference</a
+          >
+          <a href="https://docs.w3cub.com/css/@property.html">. w3cub DOCS</a>
+          <a
+            href="https://css-tricks.com/patterns-for-practical-css-custom-properties-use/"
+            >. CSS tricks
+          </a>
+        </section>
+      </div>
+      <header>
+        <ul class="navlist">
+          <h4>on this page</h4>
+          <li><a href="#home" class="active">@property intro</a></li>
+          <li><a href="#about">benefits of @property</a></li>
+          <li><a href="#services">create advanced custom properties</a></li>
+          <li><a href="#portfolio">demo : Twinkling gradient background</a></li>
+          <li><a href="#blog">conclusion</a></li>
+        </ul>
+      </header>
+    </div>
+    <footer>
+      <p>Developed by @ <span>Madhu</span></p>
+    </footer>
+    <script
+      src="https://kit.fontawesome.com/64734900bd.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="blogone.js"></script>
+  </body>
+</html>

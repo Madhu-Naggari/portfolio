@@ -1,0 +1,315 @@
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+  
+  * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --gradient-color-bg: linear-gradient(180deg,
+                rgba(247, 1, 120, 1) 0%,
+                rgba(160, 8, 156, 1) 51%,
+                rgba(99, 13, 178, 1) 100%);
+    }
+
+    body {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        overflow-x: hidden;
+        min-height: 100vh;
+        font-family: "Poppins", sans-serif;
+        background: #e3edf7;
+    }
+
+    .navbar {
+        position: absolute;
+        display: flex;
+        top: 0;
+        background: linear-gradient(to top,
+                rgba(220, 242, 255, 0.9) 40%,
+                rgba(217, 235, 255, 0.99));
+        gap: 10px;
+        z-index: 1000;
+        padding: 10px 30px;
+        height: 80px;
+        width: 100%;
+        align-items: center;
+    }
+
+    .navbar .logo {
+        font-size: 2rem;
+        text-transform: capitalize;
+    }
+
+    .navbar img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .navbar h1 span,
+    footer span {
+        background: var(--gradient-color-bg);
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    .navlist {
+        position: fixed;
+        display: flex;
+        width: 20%;
+        top: 80px;
+        right: 0;
+        flex-direction: column;
+        padding-left: 10px;
+        gap: 30px;
+    }
+
+    .navlist::before {
+        content: "";
+        position: absolute;
+        width: 3px;
+        height: 100%;
+        background: #e6006d;
+        left: 0;
+        top: 15px;
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+    li a {
+        text-decoration: none;
+        font-weight: 500;
+        color: #000;
+        font-size: 0.9rem;
+    }
+
+    .blog a {
+        text-decoration: none;
+        font-weight: 500;
+        position: relative;
+        left: 20px;
+    }
+
+   li a:hover {
+        color: #e6006d;
+    }
+
+    /* nav completed */
+    .layout {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        top: 80px;
+    }
+
+    .right-Section {
+        width: 80%;
+        position: relative;
+        padding: 10px;
+    }
+
+    section {
+        width: 100%;
+        /* min-height: 100vh; */
+        padding: 2rem 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    h1 {
+        font-size: 2rem;
+        font-weight: 900;
+    }
+
+    p {
+        color: #90979f;
+        font-weight: 400;
+        font-size: 0.9rem;
+        padding-left: 20px;
+    }
+
+    h4 {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        padding-bottom: 10px;
+    }
+
+    b {
+        color: #464646;
+    }
+
+    h5,
+    h2 {
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+
+    /* small code textarea */
+    .Example-code-small {
+        width: 100%;
+        height: auto;
+        display: flex;
+        /* align-items: center; */
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        position: relative;
+    }
+
+    .Example-code-small h2 {
+        position: relative;
+        left: 2%;
+        top: 20px;
+    }
+
+    .code-small {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5% 5% 0% 4%;
+    }
+
+    .text-box-small {
+        width: 100%;
+        display: flex;
+        border-radius: 8px;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0,
+            rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+
+    .top-area-small {
+        display: flex;
+        width: 90%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 1%;
+    }
+
+    .top-area-small i {
+        cursor: pointer;
+    }
+
+    textarea {
+        width: 95%;
+        padding: 10px;
+        border: none;
+        background: rgba(148, 148, 148, 0.1);
+        outline: none;
+        font-weight: 300;
+        font-size: 0.9rem;
+        border-radius: 8px;
+        resize: none;
+    }
+
+    footer {
+        position: absolute;
+        bottom: -13rem;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 0;
+    }
+
+    footer p {
+        font-weight: 500;
+        color: #000;
+    }
+
+    footer span {
+        font-weight: 900;
+    }
+
+    @media screen and (max-width: 768px) {
+        html {
+            font-size: 90%;
+        }
+
+        .navbar {
+            padding: 10px;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+        }
+
+        .navbar img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .navlist {
+            position: relative;
+            width: 80%;
+            top: 30px;
+            gap: 15px;
+        }
+
+        header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .layout {
+            flex-wrap: wrap-reverse;
+        }
+
+        .right-Section {
+            width: 100%;
+            top: 40px;
+        }
+
+        /* .navlist {
+          display: none;
+        } */
+    }
+
+    @media screen and (max-width: 530px) {
+        html {
+            font-size: 80%;
+        }
+
+        .navbar {
+            padding: 10px;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+        }
+
+        .navbar img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .right-Section {
+            width: 100%;
+            padding: 2px;
+        }
+
+        .text-box {
+            width: 95%;
+        }
+    }

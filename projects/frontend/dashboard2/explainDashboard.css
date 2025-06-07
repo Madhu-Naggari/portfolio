@@ -1,0 +1,320 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+
+:root{
+        --gradient-color-bg: linear-gradient(180deg, rgba(247, 1, 120, 1)0%,
+                    rgba(160, 8, 156, 1)51%,
+                    rgba(99, 13, 178, 1)100%);
+        --box-shadow:rgba(60, 64, 67, 0.3) 0px 1px 2px 0,
+            rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        --font-color:#90979f;
+        --content-color-bg:rgba(255, 255, 255, 0.5);
+}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: "Poppins", sans-serif;
+        background: #e3edf7;
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    .navbar {
+
+        position: fixed;
+        display: flex;
+        background: linear-gradient(to top,
+                rgba(220, 242, 255, 0.9) 40%,
+                rgba(217, 235, 255, 0.99));
+        gap: 10px;
+        z-index: 1000;
+        padding: 10px 30px;
+        height: 80px;
+        width: 100%;
+        align-items: center;
+    }
+
+    .navbar .logo {
+        font-size: 2rem;
+        text-transform: capitalize;
+    }
+
+    .navbar img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    section {
+        position: relative;
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .Home-Section {
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        box-shadow:var(--box-shadow);
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    .navbar h1 span,
+    footer span {
+        background:var(--gradient-color-bg);
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    .Preview-Section {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .Preview-Section img {
+        width: 98%;
+        height: auto;
+    }
+
+    h1 {
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 20px 0;
+        color: #e6006d;
+        text-align: center;
+        text-transform: capitalize;
+        text-shadow: 0 1px 1px #000;
+    }
+
+    h3 {
+        font-weight: 700;
+        padding: 10px;
+        position: relative;
+    }
+    h3::before{
+        content: "";
+        position: absolute;
+        bottom: 5px;
+        left: 8px;
+        width: 30px;
+        height: 2px;
+        background: #000;
+    }
+
+    .Home-Section h1 {
+        font-size: 3rem;
+    }
+
+    .Home-Section p {
+        font-size: 2.1rem;
+        font-weight: 400;
+        color: var(--font-color);
+    }
+
+    .Preview-Section img,
+    .languages .language {
+        padding: 20px 10px;
+        border-radius: 5px;
+        margin: 20px 10px;
+        box-shadow: var(--box-shadow)
+    }
+    .language .description p,.Live-Section .description p{
+                font-weight: 400;
+                    color: var(--font-color);
+    }
+    .FullForm {
+        font-weight: 500;
+        color: orange;
+    }
+
+    .languages .language {
+        background: var(--content-color-bg);
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .Live-Section {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        min-height: 100vh;
+        padding: 50px 0;
+        flex-wrap: wrap-reverse;
+    }
+
+    .Live-Section img {
+        width: 350px;
+        height: 350px;
+        position: relative;
+        left: 10px;
+    }
+
+    .Live-Section .description {
+        width: 50%;
+    }
+
+    .Live-Section .description h2 {
+        text-align: left;
+    }
+
+    .Live-Section .description a {
+        position: relative;
+        text-transform: capitalize;
+        top: 20px;
+        background: var(--gradient-color-bg);
+        padding: 8px 10px;
+        border-radius: 5px;
+        margin: 10px;
+        text-decoration: none;
+        font-size: 15px;
+        color: #fff;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    .Live-Section .description a:hover {
+        box-shadow: var(--box-shadow);
+    }
+
+    .Home-Section .showcase .ring {
+        top: 20%;
+    }
+
+    .showcase .ring {
+        width: 100px;
+        height: auto;
+        position: absolute;
+        z-index: -5;
+        top: 1%;
+        left: -3%;
+    }
+
+    .showcase .circle {
+        position: absolute;
+        width: 70px;
+        height: auto;
+        z-index: -5;
+        top: 2%;
+        right: 6%;
+        filter: blur(3px);
+    }
+
+    .showcase .circle2 {
+        position: absolute;
+        width: 40px;
+        height: auto;
+        z-index: -5;
+        filter: blur(3px);
+    }
+
+    .showcase .circle3 {
+        position: absolute;
+        width: 70px;
+        height: auto;
+        filter: blur(3px);
+        bottom: 36%;
+        z-index: -5;
+        left: 22%;
+    }
+
+    .showcase .half-ring {
+        position: absolute;
+        width: 120px;
+        height: auto;
+        z-index: -5;
+        bottom: 4%;
+        right: 6%;
+    }
+
+    footer {
+        text-align: center;
+        margin: 0 8%;
+        padding: 2rem 0;
+        border-top: 2px solid #e8e1e1;
+    }
+    footer p{
+        font-weight: 500;
+        color: #000;
+    }
+    footer span {
+        font-weight: 900;
+    }
+
+    @media screen and (max-width: 768px) {
+        .Live-Section .description {
+            width: 80%;
+        }
+        .Home-Section h1{
+            font-size: 2.5rem;
+        }
+        h2{
+            font-size: 1.8rem;
+        }
+    }
+
+    @media screen and (max-width: 530px) {
+        .navbar {
+            padding: 10px;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+        }
+
+        .navbar img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .Home-Section h1 {
+            font-size: 1.8rem;
+        }
+        h2{
+            font-size: 1.5rem;
+        }
+        .Home-Section p {
+            font-size: 1rem;
+        }
+
+        .Live-Section .description {
+            width: 95%;
+        }
+
+        .Preview-Section img,
+        .languages .language {
+            padding: 5px;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        .Live-Section img {
+            width: 200px;
+            height: 200px;
+        }
+
+        footer {
+            font-size: 12px;
+        }
+    }

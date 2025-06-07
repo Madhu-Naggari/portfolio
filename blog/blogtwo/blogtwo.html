@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <img src="../blogimg/companylogo.png" alt="" />
+      <h1 class="logo"><span>Madhu</span>.Dev</h1>
+    </nav>
+    <div class="layout">
+      <div class="right-Section">
+        <section class="home" id="home">
+          <h1>How to use container queries now</h1>
+          <img src="../blogimg/container.jpeg" alt="" />
+          <h4>
+            Now that container queries are supported in all browser engines, why
+            aren't more developers using them ?
+          </h4>
+          <p>
+            Chris's post lists a number of potential reasons (for example, lack
+            of awareness, old habits die hard), but there's one particular
+            reason that stands out.
+          </p>
+          <p>
+            Some developers say they
+            <b>want to use container queries now</b> but think they can't
+            <b>because they still have to support older browsers.</b>
+          </p>
+          <p>
+            As you may have guessed from the title, we think it's possible for
+            most developers to use container queries now—in production—even if
+            you have to support older browsers. This post walks you through the
+            approach we recommend to do that.
+          </p>
+        </section>
+        <section class="about" id="about">
+          <h3>A pragmatic approach</h3>
+          <p>
+            If you want to use container queries in your code now, but you want
+            the experience to look the same in all browsers, you can implement a
+            JavaScript-based fallback for browsers that don't support container
+            queries.
+          </p>
+          <h4>
+            The question then becomes: how comprehensive should the fallback be?
+          </h4>
+          <p>
+            As with any fallback, the challenge is to strike a good balance
+            between usefulness and performance. For CSS features, it's often
+            impossible to support the full API (see why not use a polyfill).
+            However, you can get pretty far by identifying the core set of
+            functionality that most developers want to use, and then optimize
+            the fallback for just those features.
+          </p>
+          <p>
+            But what is the "core set of functionality" that most developers
+            want for container queries? To answer that question, consider how
+            most developers build responsive sites currently with media queries.
+          </p>
+          <p>
+            Pretty much all modern design systems and component libraries have
+            standardized on mobile-first principles, implemented using a set of
+            predefined breakpoints (such as <b>SM</b>, <b>MD</b>, <b>LG</b>,
+            <b>XL</b> ). Components are optimized to display well on small
+            screens by default, and then styles are conditionally layered on to
+            support a fixed set of larger screen widths. (See the Bootstrap and
+            Tailwind documentation for examples of this.)
+          </p>
+          <p>
+            This approach is just as relevant to container-based design systems
+            as it is to viewport-based design systems because, in most cases,
+            what's relevant to designers is not how big the screen or viewport
+            is, it's how much space is available to the component in the context
+            that it's been placed. In other words, rather than breakpoints being
+            relative to the entire viewport (and applicable to the entire page),
+            breakpoints would apply to specific content areas, such as sidebars,
+            modal dialogs, or post bodies.
+          </p>
+          <p>
+            If you're able to work within the constraints of a mobile-first,
+            breakpoint-based approach (which most developers currently do), then
+            implementing a container-based fallback for that approach is
+            significantly easier than implementing full support for every single
+            container query feature.
+          </p>
+          <p>
+            The next section explains exactly how this all works, along with a
+            step-by-step guide showing you how to implement it on an existing
+            site.
+          </p>
+        </section>
+        <section class="services" id="services">
+          <h3>How it works</h3>
+          <h4>
+            <b>Step 1: update your component styles to use</b> @container
+            <b>rules instead of</b> @media <b>rules</b>
+          </h4>
+          <p>
+            In this first step, identify any components on your site that you
+            think would benefit from container-based sizing rather than
+            viewport-based sizing.
+          </p>
+          <p>
+            It's a good idea to start with just one or two components to see how
+            this strategy works, but if you want to convert 100% of your
+            components to container-based styling, that's fine too! The great
+            thing about this strategy is you can adopt it incrementally if
+            needed.
+          </p>
+          <p>
+            Once you've identified the components you want to update, you'll
+            need to change every @media rule in those components' CSS to an
+            @container rule. You can keep the size conditions the same.
+          </p>
+          <p>
+            If your CSS is already using a set of predefined breakpoints, then
+            you can continue to use those exactly as they're defined. If you're
+            not already using predefined breakpoints, then you'll need to define
+            names for them (which you'll reference later in JavaScript, see step
+            2 for that).
+          </p>
+          <p>
+            Here's an example of styles for a .photo-gallery component that, by
+            default, is a single column, and then it updates its style to become
+            two and three columns in the MD and XL breakpoints (respectively):
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-one">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-one"
+                  spellcheck="false"
+                  rows="19"
+                  readonly
+                >
+.photo-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+/* Styles for the `MD` breakpoint */
+@media (min-width: 768px) {
+  .photo-gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Styles for the `XL` breakpoint */
+@media (min-width: 1280px) {
+  .photo-gallery {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+          <p>
+            To change these component styles from using @media rules to using
+            @container rules, do a find and replace in your code:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-two">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-two"
+                  spellcheck="false"
+                  rows="12"
+                  readonly
+                >
+/* Before: */
+@media (min-width: 768px) { /* ... */ }
+@media (min-width: 1280px) { /* ... */ }
+
+/* After: */
+@container (min-width: 768px) { /* ... */ }
+@container (min-width: 1280px) { /* ... */ }
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+          <p>
+            Once you've updated your components styles from @media rules to
+            breakpoint-based @container rules, the next step is to configure
+            your container elements.
+          </p>
+          <h4><b>Step 2: add container elements to your HTML</b></h4>
+          <p>
+            The previous step defined component styles that are based on the
+            size of a container element. The next step is to define which
+            elements on your page should be those container elements whose size
+            the @container rules will be relative to.
+          </p>
+          <p>
+            You can declare any element to be a container element in CSS by
+            setting its container-type property to either size or inline-size.
+            If your container rules are width-based, then inline-size is
+            generally what you want to use.
+          </p>
+          <p>Consider a site with the following basic HTML structure:</p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>HTML</h4>
+                  <div class="copy-btn-small-three">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-three"
+                  spellcheck="false"
+                  rows="7"
+                  readonly
+                >
+<body>
+  <div class="sidebar">...</div>
+  <div class="content">...</div>
+</body>
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+          <p>
+            To make the .sidebar and .content elements on this site containers,
+            add this rule to your CSS:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-four">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-four"
+                  spellcheck="false"
+                  rows="4"
+                  readonly
+                >
+.content, .sidebar {
+  container-type: inline-size;
+}
+                </textarea>
+              </div>
+            </div>
+          </div>
+          <p>
+            For browsers that support container queries, this CSS is all you
+            need to make the component styles defined in the previous step
+            relative to either the main content area or the sidebar, depending
+            on which element they happen to be within.
+          </p>
+          <p>
+            However, for browsers that don't support container queries, there's
+            some additional work to do.
+          </p>
+          <p>
+            You need to add some code that detects when the size of the
+            container elements changes and then updates the DOM based on those
+            changes in a way that your CSS can hook into.
+          </p>
+          <p>
+            Fortunately, the code required to do that is minimal, and it can be
+            completely abstracted away into a shared component that you can use
+            on any site and in any content area.
+          </p>
+          <p>
+            The following code defines a reusable responsive-container element
+            that automatically listens for size changes and adds breakpoint
+            classes that your CSS can style based on:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>JS</h4>
+                  <div class="copy-btn-small-five">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-five"
+                  spellcheck="false"
+                  rows="30"
+                >
+// A mapping of default breakpoint class names and min-width sizes.
+// Redefine these as needed based on your site's design.
+const defaultBreakpoints = {SM: 512, MD: 768, LG: 1024, XL: 1280};
+
+// A resize observer that monitors size changes to all <responsive-container>
+// elements and calls their `updateBreakpoints()` method with the updated size.
+const ro = new ResizeObserver((entries) => {
+  entries.forEach((e) => e.target.updateBreakpoints(e.contentRect));
+});
+
+class ResponsiveContainer extends HTMLElement {
+  connectedCallback() {
+    const bps = this.getAttribute('breakpoints');
+    this.breakpoints = bps ? JSON.parse(bps) : defaultBreakpoints;
+    this.name = this.getAttribute('name') || '';
+    ro.observe(this);
+  }
+  disconnectedCallback() {
+    ro.unobserve(this);
+  }
+  updateBreakpoints(contentRect) {
+    for (const bp of Object.keys(this.breakpoints)) {
+      const minWidth = this.breakpoints[bp];
+      const className = this.name ? `${this.name}-${bp}` : bp;
+      this.classList.toggle(className, contentRect.width >= minWidth);
+    }
+  }
+}
+
+self.customElements.define('responsive-container', ResponsiveContainer);
+                </textarea>
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              width: 100%;
+              background: rgba(72, 197, 255, 0.3);
+              padding: 10px;
+              border-radius: 8px;
+            "
+          >
+            <span style="display: flex; align-items: center; gap: 10px">
+              <i class="fa-solid fa-star"></i>
+              <h4>Note :-</h4>
+            </span>
+            <h6 style="padding-top: 10px">
+              This code uses custom elements, however the concepts involved
+              could be easily translated to any component framework you like.
+            </h6>
+          </div>
+          <p>
+            This code works by creating a ResizeObserver that automatically
+            listens for size changes to any responsive-container elements in the
+            DOM. If the size change matches one of the defined breakpoint sizes,
+            then a class with that breakpoint name is added to the element (and
+            removed if the condition no longer matches).
+          </p>
+          <p>
+            For example, if the width of the responsive-container element is
+            between 768 and 1024 pixels (based on the default breakpoint values
+            set in the code), then the SM and MD classes will be added, like
+            this:
+          </p>
+          <p>
+            For example, if the width of the responsive-container element is
+            between 768 and 1024 pixels (based on the default breakpoint values
+            set in the code), then the SM and MD classes will be added, like
+            this:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>HTML</h4>
+                  <div class="copy-btn-small-six">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-six"
+                  spellcheck="false"
+                  rows="2"
+                  readonly
+                >
+<responsive-container class="SM MD">...</responsive-container>
+                </textarea>
+              </div>
+            </div>
+          </div>
+          <p>
+            To update the previous HTML code to use this container element,
+            change the sidebar and main content div elements to be
+            responsive-container elements instead:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>HTML</h4>
+                  <div class="copy-btn-small-seven">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-seven"
+                  spellcheck="false"
+                  rows="5"
+                  readonly
+                >
+<body>
+  <responsive-container class="sidebar">...</responsive-container>
+  <responsive-container class="content">...</responsive-container>
+</body>
+                </textarea>
+              </div>
+            </div>
+          </div>
+          <p>
+            In most situations, you can just use the responsive-container
+            element without any customization, but if you do need to customize
+            it, the following options are available:
+          </p>
+          <h4>. Custom breakpoint sizes:</h4>
+          <p>
+            This code uses a set of default breakpoint class names and min-width
+            sizes, but you change these defaults to be whatever you like. You
+            can also override these values on a per-element basis using the
+            breakpoints attribute.
+          </p>
+          <h4>. Named containers:</h4>
+          <p>
+            This code also supports named containers by passing a name
+            attribute. This can be important if you need to nest container
+            elements. See the limitations section for more details.
+          </p>
+          <p>
+            Here is an example that sets both of these configuration options:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>HTML</h4>
+                  <div class="copy-btn-small-eight">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-eight"
+                  spellcheck="false"
+                  rows="5"
+                  readonly
+                >
+<responsive-container
+  name='sidebar'
+  breakpoints='{"bp1":500,"bp2":1000,"bp3":1500}'>
+</responsive-container>
+                </textarea>
+              </div>
+            </div>
+          </div>
+          <p>
+            Finally, when bundling this code, make sure you use feature
+            detection and dynamic import() to only load it if the browser
+            doesn't support container queries.
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>JS</h4>
+                  <div class="copy-btn-small-nine">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-nine"
+                  spellcheck="false"
+                  rows="5"
+                  readonly
+                >
+if (!CSS.supports('container-type: inline-size')) {
+  import('./path/to/responsive-container.js');
+}
+                </textarea>
+              </div>
+            </div>
+          </div>
+          <h3>Step 3: add fallback styles to your CSS</h3>
+          <p>
+            The last step in this strategy is to add fallback styles for
+            browsers that don't recognize the styles defined in the @container
+            rules. Do this by duplicating those rules using the breakpoint
+            classes that get set on the responsive-container elements.
+          </p>
+          <p>
+            Continuing with the .photo-gallery example from before, the fallback
+            styles for the two @container rules might look like this:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-ten">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-ten"
+                  spellcheck="false"
+                  readonly
+                  rows="29"
+                >
+/* Container query styles for the `MD` breakpoint. */
+@container (min-width: 768px) {
+  .photo-gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Fallback styles for the `MD` breakpoint. */
+@supports not (container-type: inline-size) {
+  :where(responsive-container.MD) .photo-gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Container query styles for the `XL` breakpoint. */
+@container (min-width: 1280px) {
+  .photo-gallery {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* Fallback styles for the `XL` breakpoint. */
+@supports not (container-type: inline-size) {
+  :where(responsive-container.XL) .photo-gallery {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+                </textarea>
+              </div>
+            </div>
+          </div>
+          <p>
+            n this code, for each @container rule there is an equivalent rule
+            conditionally matching the responsive-container element if the
+            corresponding breakpoint class is present.
+          </p>
+          <p>
+            The portion of the selector matching the responsive-container
+            element is wrapped in a :where() functional pseudo-class selector,
+            to keep the specificity of the fallback selector equivalent to the
+            specificity of the original selector within the @container rule.
+          </p>
+          <p>
+            Each fallback rule is also wrapped in an @supports declaration.
+            While this is not strictly necessary for the fallback to work, it
+            means that the browser completely ignores these rules if it supports
+            container queries, which can improve style matching performance in
+            general. It also potentially allows build tools or CDNs to strip
+            those declarations if they know the browser supports container
+            queries and doesn't need those fallback styles.
+          </p>
+          <p>
+            The main downside of this fallback strategy is it requires you to
+            repeat style declaration twice, which is both tedious and error
+            prone. However, if you're using a CSS preprocessor, you can abstract
+            that into a mixin that generates both the @container rule and the
+            fallback code for you. Here's an example using Sass:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-eleven">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-eleven"
+                  spellcheck="false"
+                  readonly
+                  rows="21"
+                >
+@use 'sass:map';
+
+$breakpoints: (
+  'SM': 512px,
+  'MD': 576px,
+  'LG': 1024px,
+  'XL': 1280px,
+);
+
+@mixin breakpoint($breakpoint) {
+  @container (min-width: #{map.get($breakpoints, $breakpoint)}) {
+    @content();
+  }
+  @supports not (container-type: inline-size) {
+    :where(responsive-container.#{$breakpoint}) & {
+      @content();
+    }
+  }
+}
+                </textarea>
+              </div>
+            </div>
+          </div>
+          <p>
+            Then, once you have this mixin, you could update the original
+            .photo-gallery component styles to something like this, which
+            eliminates the duplication entirely:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-twelve">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-twelve"
+                  spellcheck="false"
+                  readonly
+                  rows="13"
+                >
+.photo-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @include breakpoint('MD') {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include breakpoint('XL') {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+                </textarea>
+              </div>
+            </div>
+          </div>
+
+          <p>And that's all there is to it!</p>
+        </section>
+        <section class="portfolio" id="portfolio">
+          <h3>Recap</h3>
+          <h4>
+            So, to recap, here's how to update your code to use container
+            queries now with a cross browser fallback.
+          </h4>
+          <p>
+            1. Identity components that you want to style relative to their
+            container, and update the @media rules in their CSS to use
+            @container rules. Also (if you're not already), standardize on a set
+            of breakpoint names to match the size conditions in your container
+            rules.
+          </p>
+          <p>
+            2. Add the JavaScript that powers the custom responsive-container
+            element, and then add the responsive-container element to any
+            content areas in your page that you want your components to be
+            relative to.
+          </p>
+          <p>
+            3. To support older browsers, add fallback styles to your CSS that
+            match against the breakpoint classes that get automatically added to
+            the responsive-container elements in your HTML. Ideally use a CSS
+            preprocessor mixin to avoid having to write the same styles twice.
+          </p>
+          <p>
+            The great thing about this strategy is there is a one-time setup
+            cost, but after that it doesn't take any additional effort to add
+            new components and define container-relative styles for them.
+          </p>
+        </section>
+        <section class="blog" id="blog">
+          <h3>Seeing it in action</h3>
+          <p>
+            Probably the best way to understand how all these steps fit together
+            is to see a demo of it in action.
+          </p>
+
+          <video
+            src="../blogimg/container-queries-demo.mp4"
+            muted
+            autoplay
+            controls
+          ></video>
+          <figcaption style="font-size: 10px">
+            A video of a user interacting with the container queries demo site.
+            The user is resizing the content areas to show how the component
+            styles update based on the size of their containing content area.
+          </figcaption>
+
+          <p>
+            This demo is an updated version of a site created in 2019 (before
+            container queries existed) to help illustrate why container queries
+            are essential to building truly responsive component libraries.
+          </p>
+          <p>
+            Since this site already had styles defined for a bunch of
+            "responsive components", it was a perfect candidate to test out the
+            strategy introduced here on a non-trivial site. Turns out, it was
+            actually quite simple to update and required almost no changes to
+            the original site styles.
+          </p>
+          <p>
+            You can check out the full demo source code on GitHub, and be sure
+            to look specifically at the demo component CSS, to see how the
+            fallback styles are defined. If you want to test out just the
+            fallback behavior, there's a fallback-only demo that includes just
+            that variant—even in browsers that support container queries.
+          </p>
+          <h4>Limitations and potential improvements</h4>
+          <p>
+            As mentioned at the beginning of this post, the strategy outlined
+            here works well for the majority of use cases that developers
+            actually care about when reaching for container queries.
+          </p>
+          <p>
+            That said, there are some more advanced use cases that this strategy
+            intentionally does not attempt to support, addressed next:
+          </p>
+        </section>
+        <section class="contact" id="contact">
+          <h3>Container query units</h3>
+          <p>
+            The specification for container queries defines a number of new
+            units, that are all relative to the container's size. While
+            potentially useful in some cases, the majority of responsive designs
+            can likely be achieved through existing means, such as percentages
+            or using grid or flex layouts.
+          </p>
+          <p>
+            That said, if you do need to use container query units, you could
+            easily add support for them using custom properties. Specifically,
+            by defining a custom property for each unit used on the container
+            element, like this:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-thirteen">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-thirteen"
+                  spellcheck="false"
+                  readonly
+                  rows="5"
+                >
+responsive-container {
+  --cqw: 1cqw;
+  --cqh: 1cqh;
+}
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+          <p>
+            And then whenever you need to access the container query units, use
+            those properties, rather than using the unit itself:
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-fourteen">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-fourteen"
+                  spellcheck="false"
+                  readonly
+                  rows="4"
+                >
+.photo-gallery {
+  font-size: calc(10 * var(--cqw));
+}
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+          <p>
+            Then, to support older browsers, set the values for those custom
+            properties on the container element within the ResizeObserver
+            callback.
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>CSS</h4>
+                  <div class="copy-btn-small-fifteen">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-fifteen"
+                  spellcheck="false"
+                  readonly
+                  rows="11"
+                >
+class ResponsiveContainer extends HTMLElement {
+  // ...
+  updateBreakpoints(contentRect) {
+    this.style.setProperty('--cqw', `${contentRect.width / 100}px`);
+    this.style.setProperty('--cqh', `${contentRect.height / 100}px`);
+    // ...
+  }
+}
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+          <p>
+            This effectively lets you "pass" those values from JavaScript to
+            CSS, and then you have the full power of CSS (for example, calc(),
+            min(), max(), clamp()) to manipulate them as needed.
+          </p>
+        </section>
+        <section class="Nested-Container" id="Nested-Container">
+          <h3>Logical properties and writing mode support</h3>
+          <p>
+            You may have noticed the use of inline-size rather than width in the
+            @container declarations in some of these CSS examples. You may have
+            also noticed the new cqi and cqb units (for inline and block sizes,
+            respectively). These new features reflect CSS's shift to logical
+            properties and values rather than physical or directional ones.
+          </p>
+          <p>
+            Unfortunately, APIs like Resize Observer still report values in
+            width and height, so if your designs need the flexibility of logical
+            properties, then you need to figure that out for yourself.
+          </p>
+          <p>
+            While it's possible to get the writing mode using something like
+            getComputedStyle() passing in the container element, doing so has a
+            cost, and there's not really a good way to detect if the writing
+            mode changes.
+          </p>
+          <p>
+            For this reason, the best approach is for the responsive-container
+            element itself to accept a writing mode property that the site owner
+            can set (and update) as needed. To implement this, you'd follow the
+            same approach shown in the previous section, and swap width and
+            height as needed.
+          </p>
+          <h3>Nested containers</h3>
+          <p>
+            The container-name property lets you give a container a name, which
+            you can then reference in an @container rule. Named containers are
+            useful if you have containers nested within containers and you need
+            certain rules to only match certain containers (not just the nearest
+            ancestor container).
+          </p>
+          <p>
+            The fallback strategy outlined here uses the descendant combinator
+            to style elements matching certain breakpoint classes. This can
+            break if you have nested containers, since any number of breakpoint
+            classes from multiple container element ancestors could match a
+            given component at the same time.
+          </p>
+          <p>
+            For example, here there are two responsive-container elements
+            wrapping the .photo-gallery component, but since the outer container
+            is larger than the inner container, they have different breakpoint
+            classes added.
+          </p>
+          <div class="Example-code-small">
+            <h2>Example</h2>
+            <div class="code-small">
+              <div class="text-box-small">
+                <div class="top-area-small">
+                  <h4>HTML</h4>
+                  <div class="copy-btn-small-sixteen">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                </div>
+                <textarea
+                  class="textarea-small-sixteen"
+                  spellcheck="false"
+                  readonly
+                  rows="9"
+                >
+<responsive-container class="SM MD LG">
+  ...
+  <responsive-container class="SM">
+    ...
+    <div class="photo-gallery">...</div class="photo-gallery">
+  </responsive-container>
+</responsive-container>
+      </textarea
+                >
+              </div>
+            </div>
+          </div>
+          <p>
+            In this example, the MD and LG class on the outer container would
+            affect the style rules matching the .photo-gallery component, which
+            doesn't match the behavior of container queries (since they only
+            match against the nearest ancestor container).
+          </p>
+          <h4>To deal with this, either:</h4>
+          <p>
+            1. Make sure you always name any containers that you're nesting, and
+            then ensure your breakpoint classes are prefixed with that container
+            name to avoid clashes.
+          </p>
+          <p>
+            2. Use the child combinator instead of the descendant combinator in
+            your fallback selectors (which is a bit more limiting).
+          </p>
+          <p>
+            The nested containers section of the demo site has an example of
+            this working using named containers, along with the Sass mixin it
+            uses in the code to generate the fallback styles for both named and
+            unnamed @container rules.
+          </p>
+          <h4>Looking forward</h4>
+          <p>
+            Hopefully this post has convinced you that it is possible to use
+            container queries in production now, and that you don't have to wait
+            for years until all non-supporting browsers completely disappear.
+          </p>
+          <p>
+            While the strategy outlined here does require a bit of extra work,
+            it should be simple and straightforward enough that most people can
+            adopt it on their sites. That said, there is certainly room to make
+            it even easier to adopt. One idea would be to consolidate a lot of
+            the disparate parts into a single component—optimized for a specific
+            framework or stack—that handles all of the glue work for you. If you
+            build something like this, let us know and we can help promote it!
+          </p>
+          <p>
+            Lastly, beyond container queries, there are so many amazing CSS and
+            UI features that are now interoperable across all major browser
+            engines. As a community, let's figure out how we can actually use
+            those features now, so our users can benefit.
+          </p>
+        </section>
+      </div>
+      <header>
+        <ul class="navlist">
+          <h4>on this page</h4>
+          <li><a href="#home" class="active">@property intro</a></li>
+          <li><a href="#about">A pragmatic approach </a></li>
+          <li><a href="#services">How it Works</a></li>
+          <li><a href="#portfolio">Recap</a></li>
+          <li><a href="#blog">Seeing it in action</a></li>
+          <li><a href="#contact">Container query units</a></li>
+          <li>
+            <a href="#Nested-Container"
+              >Logical properties and writing mode support</a
+            >
+          </li>
+        </ul>
+      </header>
+    </div>
+    <footer>
+      <p>Developed by @ <span>Madhu</span></p>
+    </footer>
+    <script
+      src="https://kit.fontawesome.com/64734900bd.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="blogtwo.js"></script>
+  </body>
+</html>
